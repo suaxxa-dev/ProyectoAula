@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERCA TO-DO | Mi cuenta</title>
+    <meta name="author" content="Juan Jose Suaza - suaxxa-dev">
+    <link rel="icon" href="img/ICON.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/mainpage.css">
+    <link rel="stylesheet" href="css/cuenta.css">
+</head>
+<body class="page-cuenta">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="Mainpage.html" class="brand-logo-link"><h1 class="brand-logo">MERCA <span>TO-DO</span></h1></a>
+                <ul class="nav-links">
+                    <li><a href="carrito.html">CARRITO</a></li>
+                    <li><a href="catalogo.html?seccion=hombre" data-seccion="hombre">HOMBRE</a></li>
+                    <li><a href="catalogo.html?seccion=mujer" data-seccion="mujer">MUJER</a></li>
+                    <li><a href="catalogo.html?seccion=accesorios" data-seccion="accesorios">ACCESORIOS</a></li>
+                    <li><a href="catalogo.html?seccion=deportes" data-seccion="deportes">DEPORTES</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <button type="button" class="icon-btn" id="search-trigger" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div class="profile-dropdown-wrap">
+                    <button type="button" class="icon-btn" id="profile-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="profile-menu"><i class="fa-solid fa-user"></i></button>
+                    <div class="profile-dropdown" id="profile-menu" role="menu" aria-label="Menú de cuenta">
+                        <div id="profile-menu-body"></div>
+                    </div>
+                </div>
+                <div class="cart-dropdown-wrap">
+                    <button type="button" class="icon-btn cart-btn" id="cart-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="cart-panel">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-badge" id="cart-badge-count">0</span>
+                    </button>
+                    <div class="cart-dropdown" id="cart-panel" role="dialog" aria-label="Carrito de compras">
+                        <div class="cart-dropdown-header">Tu carrito</div>
+                        <div id="cart-panel-body"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-overlay" id="search-panel">
+            <div class="search-content">
+                <div class="search-bar-input">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="¿Qué buscas hoy?" id="main-search" autocomplete="off">
+                </div>
+                <div class="search-section" id="section-suggestions">
+                    <h3>SUGERENCIAS DE PRODUCTOS</h3>
+                    <div class="suggestions-horizontal" id="results-container"></div>
+                </div>
+                <div class="search-section" id="section-sku">
+                    <h3>BÚSQUEDA POR CÓDIGO (SKU)</h3>
+                    <p class="sku-result" id="sku-display"></p>
+                </div>
+                <div class="search-section" id="section-cats">
+                    <h3>CATEGORÍAS RELACIONADAS</h3>
+                    <ul class="rel-cats" id="cats-display"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="cuenta-wrap">
+        <header class="cuenta-header">
+            <a href="Mainpage.html" class="cuenta-back" aria-label="Volver al inicio"><i class="fa-solid fa-arrow-left"></i></a>
+            <h1 class="cuenta-title">Mi cuenta</h1>
+        </header>
+
+        <div class="cuenta-layout">
+            <aside class="cuenta-sidebar" aria-label="Menú de cuenta">
+                <button type="button" class="cuenta-nav-btn is-active" data-panel="resumen" aria-current="page">
+                    <i class="fa-regular fa-square-check" aria-hidden="true"></i> Resumen
+                </button>
+                <button type="button" class="cuenta-nav-btn" data-panel="pedidos">
+                    <i class="fa-solid fa-box" aria-hidden="true"></i> Pedidos
+                </button>
+                <button type="button" class="cuenta-nav-btn" data-panel="direcciones">
+                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Direcciones
+                </button>
+                <button type="button" class="cuenta-nav-btn" data-panel="datos">
+                    <i class="fa-solid fa-user" aria-hidden="true"></i> Datos personales
+                </button>
+                <button type="button" class="cuenta-nav-btn" data-panel="seguridad">
+                    <i class="fa-solid fa-lock" aria-hidden="true"></i> Seguridad y contraseña
+                </button>
+                <button type="button" class="cuenta-nav-btn cuenta-nav-btn--logout" id="cuenta-logout-side" type="button">
+                    <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Cerrar sesión
+                </button>
+            </aside>
+
+            <div class="cuenta-main">
+                <section class="cuenta-panel is-visible" id="panel-resumen" aria-labelledby="cuenta-greet">
+                    <p class="cuenta-greet" id="cuenta-greet">¡Hola!</p>
+                    <div class="cuenta-order-card" id="cuenta-ultimo-pedido">
+                        <!-- JS -->
+                    </div>
+                    <h3 class="cuenta-quick-title">Accesos rápidos</h3>
+                    <div class="cuenta-quick-grid">
+                        <a href="#" class="cuenta-quick-card" data-go="pedidos">
+                            <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+                            <strong>Pedidos</strong>
+                            <span>Ver historial completo</span>
+                        </a>
+                        <a href="#" class="cuenta-quick-card" data-go="direcciones">
+                            <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+                            <strong>Direcciones</strong>
+                            <span>Gestionar ubicaciones</span>
+                        </a>
+                    </div>
+                </section>
+
+                <section class="cuenta-panel" id="panel-pedidos" aria-labelledby="tit-pedidos">
+                    <h2 id="tit-pedidos">Mis pedidos</h2>
+                    <div class="cuenta-filters">
+                        <label>Estado
+                            <select id="filtro-estado" aria-label="Filtrar por estado">
+                                <option value="todos">Todos</option>
+                                <option value="enviado">Enviado</option>
+                                <option value="entregado">Entregado</option>
+                            </select>
+                        </label>
+                        <label>Fecha
+                            <select id="filtro-fecha" aria-label="Filtrar por fecha">
+                                <option value="mes">Último mes</option>
+                                <option value="todos">Todas</option>
+                            </select>
+                        </label>
+                        <label>Código
+                            <input type="text" id="filtro-codigo" placeholder="Ej. MT-89432" autocomplete="off" aria-label="Buscar por código de pedido">
+                        </label>
+                    </div>
+                    <div id="pedidos-list"></div>
+                </section>
+
+                <section class="cuenta-panel" id="panel-direcciones" aria-labelledby="tit-dir">
+                    <h2 id="tit-dir">Direcciones</h2>
+                    <div class="cuenta-dir-inner">
+                        <h3>Direcciones guardadas</h3>
+                        <div class="cuenta-dir-grid">
+                            <div class="cuenta-dir-card">
+                                <h4>Dirección predeterminada</h4>
+                                <p id="dir-default-text">Carlos Pérez<br>Calle 123, No. 45-67, Ciudad, Estado, 12345</p>
+                                <div class="cuenta-dir-badges">
+                                    <span class="cuenta-tag cuenta-tag--green">Predeterminada</span>
+                                    <span class="cuenta-tag cuenta-tag--gray">Facturación</span>
+                                </div>
+                            </div>
+                            <div class="cuenta-dir-card">
+                                <h4>Dirección adicional</h4>
+                                <p>Oficina — Carlos Pérez<br>Avenida Central 789, Ciudad, Estado, 67890</p>
+                                <div class="cuenta-dir-badges">
+                                    <span class="cuenta-tag cuenta-tag--gray">Envío</span>
+                                </div>
+                                <div class="cuenta-dir-actions">
+                                    <button type="button" aria-label="Editar dirección"><i class="fa-solid fa-pencil"></i></button>
+                                    <button type="button" aria-label="Eliminar dirección"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-cuenta-dir-add" id="btn-add-dir">Añadir nueva dirección</button>
+                    </div>
+                </section>
+
+                <section class="cuenta-panel" id="panel-datos" aria-labelledby="tit-datos">
+                    <h2 id="tit-datos">Datos personales</h2>
+                    <div class="cuenta-datos-box">
+                        <div class="cuenta-datos-head">
+                            <h3>Mi perfil — Datos personales</h3>
+                            <div class="cuenta-avatar-ph" aria-hidden="true"><i class="fa-solid fa-user"></i></div>
+                        </div>
+                        <p style="margin:0 0 16px;font-size:0.85rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.06em;">Formulario de datos</p>
+                        <form id="form-datos-personales" novalidate>
+                            <div class="cuenta-form-grid">
+                                <div class="cuenta-field">
+                                    <label for="dato-nombre">Nombre completo</label>
+                                    <input type="text" id="dato-nombre" name="nombre" autocomplete="name">
+                                </div>
+                                <div class="cuenta-field">
+                                    <label for="dato-email">Email</label>
+                                    <input type="email" id="dato-email" name="email" disabled autocomplete="email">
+                                </div>
+                                <div class="cuenta-field">
+                                    <label for="dato-tel">Teléfono</label>
+                                    <input type="tel" id="dato-tel" name="telefono" autocomplete="tel" placeholder="+57 300 000 0000">
+                                </div>
+                                <div class="cuenta-field">
+                                    <label for="dato-nac">Fecha de nacimiento</label>
+                                    <input type="date" id="dato-nac" name="nacimiento">
+                                </div>
+                            </div>
+                            <div class="cuenta-datos-extra">
+                                <h4>Información de cuenta (opcional)</h4>
+                                <p>Miembro desde: <strong>2022</strong></p>
+                                <p>Última actualización: <strong id="dato-ultima-act">01/10/2023</strong></p>
+                            </div>
+                            <button type="submit" class="btn-cuenta-save">Guardar cambios</button>
+                            <p class="cuenta-save-ok" id="dato-save-ok" role="status"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Tus datos se han guardado correctamente</p>
+                        </form>
+                    </div>
+                </section>
+
+                <section class="cuenta-panel" id="panel-seguridad" aria-labelledby="tit-sec">
+                    <h2 id="tit-sec">Seguridad y contraseña</h2>
+                    <div class="cuenta-sec-grid">
+                        <div class="cuenta-sec-col">
+                            <h3>Seguridad de cuenta</h3>
+                            <h4>Cambiar contraseña</h4>
+                            <form id="form-password" novalidate>
+                                <div class="cuenta-field">
+                                    <label for="pass-actual">Contraseña actual</label>
+                                    <input type="password" id="pass-actual" autocomplete="current-password">
+                                </div>
+                                <div class="cuenta-field">
+                                    <label for="pass-nueva">Nueva contraseña</label>
+                                    <input type="password" id="pass-nueva" autocomplete="new-password">
+                                </div>
+                                <div class="cuenta-field">
+                                    <label for="pass-nueva2">Confirmar nueva contraseña</label>
+                                    <input type="password" id="pass-nueva2" autocomplete="new-password">
+                                </div>
+                                <ul class="cuenta-sec-rules">
+                                    <li>Mínimo 8 caracteres</li>
+                                    <li>Incluir una letra mayúscula y una minúscula</li>
+                                    <li>Incluir un número y un símbolo especial</li>
+                                    <li>Las contraseñas nuevas deben coincidir</li>
+                                </ul>
+                                <button type="submit" class="btn-cuenta-save" style="margin-top: 0;">Actualizar contraseña</button>
+                            </form>
+                        </div>
+                        <div class="cuenta-sec-col">
+                            <h3>Actividad</h3>
+                            <h4>Inicios de sesión recientes</h4>
+                            <table class="cuenta-sec-table">
+                                <thead>
+                                    <tr>
+                                        <th>Dispositivo</th>
+                                        <th>Ubicación</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>PC — Windows</td>
+                                        <td>Ciudad</td>
+                                        <td>Hace 1 hr</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Móvil — Android</td>
+                                        <td>Ciudad</td>
+                                        <td>Hace 1 d</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col info-col">
+                <h3 class="brand-logo">MERCA <span>TO-DO</span></h3>
+                <p>Somos la plataforma líder en comercio digital, conectando tus deseos con la puerta de tu casa.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>COMPRAS</h4>
+                <ul>
+                    <li><a href="catalogo.html?seccion=hombre">Hombres</a></li>
+                    <li><a href="catalogo.html?seccion=mujer">Mujeres</a></li>
+                    <li><a href="catalogo.html?cat=tecnologia">Tecnología</a></li>
+                    <li><a href="catalogo.html?ofertas=1">Ofertas del día</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AYUDA</h4>
+                <ul>
+                    <li><a href="ayuda.html">Centro de ayuda</a></li>
+                    <li><a href="cuenta.html">Rastrear pedido</a></li>
+                    <li><a href="ayuda.html#titulo-dev">Devoluciones</a></li>
+                    <li><a href="ayuda.html#titulo-contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="payment-methods">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <span class="pay-tag">NEQUI</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MERCA TO-DO. Todos los derechos reservados | Hecho por suaxxa-dev</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/productos-data.js"></script>
+    <script src="js/cuenta.js"></script>
+</body>
+</html>

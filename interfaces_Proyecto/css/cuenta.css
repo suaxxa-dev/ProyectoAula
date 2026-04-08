@@ -1,0 +1,784 @@
+.page-cuenta {
+    background: #eef0f3;
+    min-height: 100vh;
+}
+
+.cuenta-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 20px 5% 64px;
+}
+
+.cuenta-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.cuenta-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #fff;
+    color: #1e3a5f;
+    border: 1px solid #e2e8f0;
+    text-decoration: none;
+    transition:
+        background 0.15s,
+        color 0.15s,
+        border-color 0.15s;
+}
+
+.cuenta-back:hover {
+    background: #f8fafc;
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.cuenta-title {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    font-weight: 800;
+    color: #1e3a5f;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.cuenta-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .cuenta-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cuenta-sidebar {
+        position: relative;
+        top: 0;
+    }
+}
+
+.cuenta-sidebar {
+    background: #e8eaee;
+    border-radius: 14px;
+    padding: 10px 0;
+    position: sticky;
+    top: 88px;
+    border: 1px solid #dce0e6;
+}
+
+.cuenta-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 16px 13px 14px;
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #334155;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        background 0.15s,
+        color 0.15s;
+    border-left: 4px solid transparent;
+}
+
+.cuenta-nav-btn i {
+    width: 22px;
+    text-align: center;
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+.cuenta-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.55);
+    color: #1e3a5f;
+}
+
+.cuenta-nav-btn.is-active {
+    background: #d8dce3;
+    color: #1e3a5f;
+    font-weight: 700;
+    border-left-color: var(--orange);
+}
+
+.cuenta-nav-btn.is-active i {
+    color: #1e3a5f;
+}
+
+.cuenta-nav-btn--logout {
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid #cdd2d9;
+    color: #64748b;
+}
+
+.cuenta-nav-btn--logout:hover {
+    color: #b91c1c;
+    background: rgba(254, 226, 226, 0.5);
+}
+
+.cuenta-nav-btn--logout i {
+    color: #94a3b8;
+}
+
+.cuenta-main {
+    background: #fff;
+    border-radius: 18px;
+    padding: 28px 30px 32px;
+    box-shadow: 0 6px 28px rgba(30, 58, 95, 0.08);
+    border: 1px solid rgba(30, 58, 95, 0.06);
+    min-height: 560px;
+}
+
+.cuenta-panel {
+    display: none;
+}
+
+.cuenta-panel.is-visible {
+    display: block;
+}
+
+.cuenta-panel > h2 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1e3a5f;
+    margin: 0 0 22px;
+}
+
+.cuenta-greet {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1e3a5f;
+    margin: 0 0 22px;
+}
+
+/* Resumen — último pedido */
+.cuenta-order-card {
+    background: #f1f3f6;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 28px;
+    border: 1px solid #e2e6ec;
+}
+
+.cuenta-order-card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.cuenta-order-card-head h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cuenta-order-card-head h3 i {
+    color: var(--orange);
+}
+
+.cuenta-order-meta {
+    font-size: 0.88rem;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.cuenta-order-meta strong {
+    color: #1e293b;
+}
+
+.btn-cuenta-orange {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 12px;
+    background: var(--orange);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: filter 0.15s;
+}
+
+.btn-cuenta-orange:hover {
+    filter: brightness(1.06);
+}
+
+.cuenta-stepper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 8px;
+    padding-top: 18px;
+    border-top: 1px solid #dce0e6;
+}
+
+.cuenta-step {
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.cuenta-step i {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: #cbd5e1;
+}
+
+.cuenta-step.is-done {
+    color: #1e3a5f;
+}
+
+.cuenta-step.is-done i {
+    color: #2563eb;
+}
+
+.cuenta-step.is-current {
+    color: var(--orange);
+}
+
+.cuenta-step.is-current i {
+    color: var(--orange);
+}
+
+/* Accesos rápidos */
+.cuenta-quick-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #1e3a5f;
+    margin: 0 0 14px;
+}
+
+.cuenta-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 560px) {
+    .cuenta-quick-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cuenta-quick-card {
+    display: block;
+    padding: 24px 20px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.cuenta-quick-card:hover {
+    border-color: rgba(227, 118, 30, 0.35);
+    box-shadow: 0 8px 24px rgba(30, 58, 95, 0.08);
+}
+
+.cuenta-quick-card i {
+    font-size: 2rem;
+    color: var(--orange);
+    margin-bottom: 12px;
+    display: block;
+}
+
+.cuenta-quick-card strong {
+    display: block;
+    font-size: 1rem;
+    color: #1e3a5f;
+    margin-bottom: 6px;
+}
+
+.cuenta-quick-card span {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+/* Pedidos */
+.cuenta-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 22px;
+    align-items: flex-end;
+}
+
+.cuenta-filters label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.cuenta-filters select,
+.cuenta-filters input[type='text'] {
+    min-width: 160px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.9rem;
+    background: #fff;
+}
+
+.cuenta-filters input[type='text'] {
+    min-width: 200px;
+}
+
+.cuenta-pedido-card {
+    background: #f1f3f6;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    border: 1px solid #e2e6ec;
+}
+
+.cuenta-pedido-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+}
+
+.cuenta-pedido-top h3 {
+    margin: 0 0 6px;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.cuenta-pedido-top p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.cuenta-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.cuenta-badge--enviado {
+    background: var(--orange);
+    color: #fff;
+}
+
+.cuenta-badge--entregado {
+    background: #15803d;
+    color: #fff;
+}
+
+.cuenta-pedido-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.cuenta-pedido-item {
+    text-align: center;
+    max-width: 100px;
+}
+
+.cuenta-pedido-item img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #fff;
+    padding: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.cuenta-pedido-item span {
+    display: block;
+    font-size: 0.72rem;
+    color: #475569;
+    margin-top: 6px;
+    line-height: 1.3;
+}
+
+.cuenta-pedido-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn-cuenta-outline {
+    padding: 9px 16px;
+    border-radius: 10px;
+    border: 1px solid #1e293b;
+    background: #fff;
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition:
+        background 0.15s,
+        border-color 0.15s;
+}
+
+.btn-cuenta-outline:hover {
+    background: #f8fafc;
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+/* Direcciones */
+.cuenta-dir-inner {
+    background: #eef1f5;
+    border-radius: 16px;
+    padding: 22px;
+    border: 1px solid #e2e6ec;
+}
+
+.cuenta-dir-inner h3 {
+    margin: 0 0 16px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.cuenta-dir-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 700px) {
+    .cuenta-dir-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cuenta-dir-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(30, 58, 95, 0.05);
+}
+
+.cuenta-dir-card h4 {
+    margin: 0 0 10px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.cuenta-dir-card p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.cuenta-dir-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    align-items: center;
+}
+
+.cuenta-tag {
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.cuenta-tag--green {
+    background: #15803d;
+    color: #fff;
+}
+
+.cuenta-tag--gray {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.cuenta-dir-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    justify-content: flex-end;
+}
+
+.cuenta-dir-actions button {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    color: #64748b;
+    cursor: pointer;
+    transition:
+        color 0.15s,
+        border-color 0.15s;
+}
+
+.cuenta-dir-actions button:hover {
+    color: var(--orange);
+    border-color: var(--orange);
+}
+
+.btn-cuenta-dir-add {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: var(--orange);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: filter 0.15s;
+}
+
+.btn-cuenta-dir-add:hover {
+    filter: brightness(1.06);
+}
+
+/* Datos personales */
+.cuenta-datos-box {
+    background: #eef1f5;
+    border-radius: 16px;
+    padding: 22px 24px 26px;
+    border: 1px solid #e2e6ec;
+}
+
+.cuenta-datos-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.cuenta-datos-head h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.cuenta-avatar-ph {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #e2e8f0, #cbd5e1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.cuenta-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 20px;
+}
+
+@media (max-width: 640px) {
+    .cuenta-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cuenta-field label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cuenta-field input {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.92rem;
+    box-sizing: border-box;
+}
+
+.cuenta-field input:disabled {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.cuenta-datos-extra {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #dce0e6;
+}
+
+.cuenta-datos-extra h4 {
+    margin: 0 0 10px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #475569;
+}
+
+.cuenta-datos-extra p {
+    margin: 0 0 6px;
+    font-size: 0.88rem;
+    color: #64748b;
+}
+
+.btn-cuenta-save {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: var(--orange);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: filter 0.15s;
+}
+
+.btn-cuenta-save:hover {
+    filter: brightness(1.06);
+}
+
+.cuenta-save-ok {
+    display: none;
+    margin-top: 14px;
+    font-size: 0.9rem;
+    color: #15803d;
+    font-weight: 600;
+    align-items: center;
+    gap: 8px;
+}
+
+.cuenta-save-ok.is-visible {
+    display: flex;
+}
+
+/* Seguridad */
+.cuenta-sec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+@media (max-width: 800px) {
+    .cuenta-sec-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cuenta-sec-col {
+    background: #f1f3f6;
+    border-radius: 14px;
+    padding: 20px 22px;
+    border: 1px solid #e2e6ec;
+}
+
+.cuenta-sec-col h3 {
+    margin: 0 0 6px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.cuenta-sec-col h4 {
+    margin: 0 0 16px;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.cuenta-sec-col .cuenta-field {
+    margin-bottom: 14px;
+}
+
+.cuenta-sec-rules {
+    font-size: 0.82rem;
+    color: #64748b;
+    margin: 0 0 16px;
+    padding-left: 1.1rem;
+    line-height: 1.55;
+}
+
+.cuenta-sec-table {
+    width: 100%;
+    font-size: 0.82rem;
+    border-collapse: collapse;
+}
+
+.cuenta-sec-table th {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 2px solid #dce0e6;
+    color: #475569;
+    font-weight: 700;
+}
+
+.cuenta-sec-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+}

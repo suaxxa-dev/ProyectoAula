@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERCA TO-DO | Tu Tienda Digital</title>
+    <meta name="author" content="Juan Jose Suaza - suaxxa-dev">
+    <link rel="icon" href="img/ICON.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/mainpage.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="Mainpage.html" class="brand-logo-link"><h1 class="brand-logo">MERCA <span>TO-DO</span></h1></a>
+                <ul class="nav-links">
+                    <li><a href="carrito.html">CARRITO</a></li>
+                    <li><a href="catalogo.html?seccion=hombre" data-seccion="hombre">HOMBRE</a></li>
+                    <li><a href="catalogo.html?seccion=mujer" data-seccion="mujer">MUJER</a></li>
+                    <li><a href="catalogo.html?seccion=accesorios" data-seccion="accesorios">ACCESORIOS</a></li>
+                    <li><a href="catalogo.html?seccion=deportes" data-seccion="deportes">DEPORTES</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <button class="icon-btn" id="search-trigger"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div class="profile-dropdown-wrap">
+                    <button type="button" class="icon-btn" id="profile-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="profile-menu"><i class="fa-solid fa-user"></i></button>
+                    <div class="profile-dropdown" id="profile-menu" role="menu" aria-label="Menú de cuenta">
+                        <div id="profile-menu-body"></div>
+                    </div>
+                </div>
+                <div class="cart-dropdown-wrap">
+                    <button type="button" class="icon-btn cart-btn" id="cart-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="cart-panel">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-badge" id="cart-badge-count">0</span>
+                    </button>
+                    <div class="cart-dropdown" id="cart-panel" role="dialog" aria-label="Carrito de compras">
+                        <div class="cart-dropdown-header">Tu carrito</div>
+                        <div id="cart-panel-body"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-overlay" id="search-panel">
+            <div class="search-content">
+                <div class="search-bar-input">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="¿Qué buscas hoy?" id="main-search">
+                </div>
+                
+                <div class="search-section" id="section-suggestions">
+                    <h3>SUGERENCIAS DE PRODUCTOS</h3>
+                    <div class="suggestions-horizontal" id="results-container"></div>
+                </div>
+
+                <div class="search-section" id="section-sku">
+                    <h3>BÚSQUEDA POR CÓDIGO (SKU)</h3>
+                    <p class="sku-result" id="sku-display"></p>
+                </div>
+
+                <div class="search-section" id="section-cats">
+                    <h3>CATEGORÍAS RELACIONADAS</h3>
+                    <ul class="rel-cats" id="cats-display"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h2>TODO LO QUE BUSCAS, EN UN SOLO LUGAR.</h2>
+                <p>Descubre las mejores ofertas en tecnología y moda con envíos a todo el país.</p>
+                <a href="catalogo.html?ofertas=1" class="btn-orange">EXPLORAR OFERTAS</a>
+            </div>
+            <div class="hero-img-box">
+                <img src="img/iphone.png" alt="iPhone 15" class="img-iphone">
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <h2 class="section-title">CATEGORÍAS PRINCIPALES</h2>
+        <div class="cat-grid">
+            <a href="catalogo.html?cat=tecnologia" class="cat-card">
+                <i class="fa-solid fa-laptop cat-icon"></i>
+                <p>TECNOLOGÍA</p>
+            </a>
+            <a href="catalogo.html?cat=hogar" class="cat-card">
+                <i class="fa-solid fa-couch cat-icon"></i>
+                <p>HOGAR</p>
+            </a>
+            <a href="catalogo.html?cat=moda" class="cat-card">
+                <i class="fa-solid fa-shirt cat-icon"></i>
+                <p>MODA</p>
+            </a>
+            <a href="catalogo.html?cat=herramientas" class="cat-card">
+                <i class="fa-solid fa-screwdriver-wrench cat-icon"></i>
+                <p>HERRAMIENTAS</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="section bg-gray">
+        <h2 class="section-title">PRODUCTOS DESTACADOS</h2>
+        <div class="prod-grid">
+            <div class="prod-card">
+                <div class="p-img"><img src="img/asics.jpg" alt="Asics"></div>
+                <div class="p-info">
+                    <h4>ASICS SKY ELITE AZUL</h4>
+                    <div class="p-row">
+                        <span class="stars">★★★★☆</span>
+                        <span class="price">$159.99</span>
+                    </div>
+                    <button type="button" class="btn-add-cart" data-id="asics-sky-elite" data-nombre="ASICS SKY ELITE AZUL" data-precio="159.99" data-precio-label="$159.99" data-img="img/asics.jpg">
+                        <i class="fa-solid fa-cart-plus" aria-hidden="true"></i> Añadir al carrito
+                    </button>
+                </div>
+            </div>
+            <div class="prod-card">
+                <div class="p-img"><img src="img/airpods.jpg" alt="AirPods"></div>
+                <div class="p-info">
+                    <h4>AIR PODS PRO 2 GEN</h4>
+                    <div class="p-row">
+                        <span class="stars">★★★★★</span>
+                        <span class="price">$249.00</span>
+                    </div>
+                    <button type="button" class="btn-add-cart" data-id="airpods-pro-2" data-nombre="AIR PODS PRO 2 GEN" data-precio="249.00" data-precio-label="$249.00" data-img="img/airpods.jpg">
+                        <i class="fa-solid fa-cart-plus" aria-hidden="true"></i> Añadir al carrito
+                    </button>
+                </div>
+            </div>
+            <div class="prod-card">
+                <div class="p-img"><img src="img/camiseta-colombia.jpg" alt="Camiseta Colombia"></div>
+                <div class="p-info">
+                    <h4>CAMISETA COLOMBIA</h4>
+                    <div class="p-row">
+                        <span class="stars">★★★★☆</span>
+                        <span class="price">$89.99</span>
+                    </div>
+                    <button type="button" class="btn-add-cart" data-id="camiseta-colombia" data-nombre="CAMISETA COLOMBIA" data-precio="89.99" data-precio-label="$89.99" data-img="img/camiseta-colombia.jpg">
+                        <i class="fa-solid fa-cart-plus" aria-hidden="true"></i> Añadir al carrito
+                    </button>
+                </div>
+            </div>
+            <div class="prod-card">
+                <div class="p-img"><img src="img/straps-gym.jpg" alt="Straps para gym"></div>
+                <div class="p-info">
+                    <h4>STRAPS PARA GYM</h4>
+                    <div class="p-row">
+                        <span class="stars">★★★★★</span>
+                        <span class="price">$24.99</span>
+                    </div>
+                    <button type="button" class="btn-add-cart" data-id="straps-gym" data-nombre="STRAPS PARA GYM" data-precio="24.99" data-precio-label="$24.99" data-img="img/straps-gym.jpg">
+                        <i class="fa-solid fa-cart-plus" aria-hidden="true"></i> Añadir al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col info-col">
+                <h3 class="brand-logo">MERCA <span>TO-DO</span></h3>
+                <p>Somos la plataforma líder en comercio digital, conectando tus deseos con la puerta de tu casa.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>COMPRAS</h4>
+                <ul>
+                    <li><a href="catalogo.html?seccion=hombre">Hombres</a></li>
+                    <li><a href="catalogo.html?seccion=mujer">Mujeres</a></li>
+                    <li><a href="catalogo.html?cat=tecnologia">Tecnología</a></li>
+                    <li><a href="catalogo.html?ofertas=1">Ofertas del día</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AYUDA</h4>
+                <ul>
+                    <li><a href="ayuda.html">Centro de ayuda</a></li>
+                    <li><a href="cuenta.html">Rastrear pedido</a></li>
+                    <li><a href="ayuda.html#titulo-dev">Devoluciones</a></li>
+                    <li><a href="ayuda.html#titulo-contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="payment-methods">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <span class="pay-tag">NEQUI</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MERCA TO-DO. Todos los derechos reservados | Hecho por suaxxa-dev</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/mainpage.js"></script>
+</body>
+</html>

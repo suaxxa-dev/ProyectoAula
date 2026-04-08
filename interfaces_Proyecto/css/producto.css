@@ -1,0 +1,494 @@
+.page-producto {
+    background: #f5f5f6;
+    min-height: 100vh;
+}
+
+.producto-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 5% 60px;
+}
+
+.producto-breadcrumb {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 22px;
+}
+
+.producto-breadcrumb a {
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.producto-breadcrumb span {
+    margin: 0 6px;
+    color: #aaa;
+}
+
+.producto-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 48px;
+}
+
+@media (max-width: 900px) {
+    .producto-hero {
+        grid-template-columns: 1fr;
+    }
+}
+
+.producto-main-images {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.producto-main-img {
+    background: #fff;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.producto-main-img img {
+    max-width: 100%;
+    max-height: 320px;
+    object-fit: contain;
+}
+
+.producto-thumbs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.producto-thumb {
+    width: 72px;
+    height: 72px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background: #fff;
+    padding: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.producto-thumb.is-active,
+.producto-thumb:hover {
+    border-color: var(--orange);
+}
+
+.producto-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.producto-titulo {
+    font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.25;
+    margin: 0 0 14px;
+}
+
+.producto-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.producto-stars {
+    color: #e6b800;
+    letter-spacing: 2px;
+    font-size: 1rem;
+}
+
+.producto-rating-meta {
+    font-size: 0.9rem;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.producto-price-block {
+    margin-bottom: 18px;
+}
+
+.producto-price-current {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text);
+}
+
+.producto-price-old {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.producto-price-old strong {
+    color: #555;
+    text-decoration: line-through;
+    font-weight: 600;
+}
+
+.producto-desc {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #444;
+    margin-bottom: 22px;
+}
+
+.producto-options {
+    margin-bottom: 18px;
+}
+
+.producto-options--hidden {
+    display: none;
+}
+
+.producto-opt-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.producto-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.producto-swatch {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.producto-swatch.is-active {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 2px rgba(227, 118, 30, 0.35);
+}
+
+.producto-swatch:hover {
+    transform: scale(1.08);
+}
+
+.producto-tallas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.producto-talla-btn {
+    min-width: 44px;
+    padding: 10px 14px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.producto-talla-btn.is-active {
+    border-color: var(--orange);
+    background: var(--orange);
+    color: #fff;
+}
+
+.producto-talla-btn:hover:not(.is-active) {
+    border-color: #bbb;
+}
+
+.producto-vendedor {
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    border: 1px solid #e8e8e8;
+    font-size: 0.9rem;
+}
+
+.producto-vendedor-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.producto-vendedor-nombre {
+    font-weight: 700;
+}
+
+.badge-estrella {
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.badge-ventas {
+    background: #dcfce7;
+    color: #166534;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 999px;
+}
+
+.producto-vendedor-stars {
+    color: #e6b800;
+    font-size: 0.85rem;
+}
+
+.btn-producto-cart {
+    width: 100%;
+    max-width: 420px;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #ec8a32 0%, var(--orange) 100%);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(227, 118, 30, 0.35);
+    transition: filter 0.2s, transform 0.15s;
+}
+
+.btn-producto-cart:hover {
+    filter: brightness(1.06);
+}
+
+.btn-producto-cart:active {
+    transform: scale(0.99);
+}
+
+.producto-pregunta {
+    margin-top: 14px;
+    font-size: 0.88rem;
+}
+
+.producto-pregunta a {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.producto-tabs-section {
+    background: #fff;
+    border-radius: 18px;
+    padding: 8px 0 28px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+}
+
+.producto-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    border-bottom: 1px solid #eee;
+    padding: 0 20px 0;
+    margin-bottom: 24px;
+}
+
+.producto-tab {
+    background: none;
+    border: none;
+    padding: 16px 8px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #888;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+}
+
+.producto-tab:hover {
+    color: var(--text);
+}
+
+.producto-tab.is-active {
+    color: var(--orange);
+}
+
+.producto-tab.is-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background: var(--orange);
+    border-radius: 2px 2px 0 0;
+}
+
+.producto-tab-panels {
+    padding: 0 24px;
+}
+
+.producto-tab-panel[hidden] {
+    display: none !important;
+}
+
+.producto-tab-panel.is-visible {
+    display: block;
+}
+
+.producto-subheading {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0 0 16px;
+    color: var(--text);
+}
+
+.producto-bullets {
+    margin: 0;
+    padding-left: 1.2rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.producto-bullets li {
+    margin-bottom: 8px;
+}
+
+.producto-spec-table-wrap {
+    overflow-x: auto;
+}
+
+.producto-spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+
+.producto-spec-table tr:nth-child(odd) {
+    background: #f8f9fa;
+}
+
+.producto-spec-table tr:nth-child(even) {
+    background: #fff;
+}
+
+.producto-spec-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.producto-spec-table td:first-child {
+    font-weight: 700;
+    color: #333;
+    width: 42%;
+}
+
+.opiniones-placeholder {
+    color: #555;
+    line-height: 1.6;
+}
+
+.producto-relacionados {
+    margin-bottom: 32px;
+}
+
+.producto-rel-title {
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.producto-rel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+}
+
+.producto-rel-card {
+    background: #e8eaed;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: block;
+}
+
+.producto-rel-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.producto-rel-card .rel-wish {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+    color: var(--dark);
+}
+
+.producto-rel-img {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: linear-gradient(180deg, #f4f5f7, #e8eaed);
+}
+
+.producto-rel-img img {
+    max-width: 90%;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+.producto-rel-info {
+    padding: 10px 12px 12px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.producto-back {
+    text-align: center;
+    font-size: 0.88rem;
+}
+
+.producto-back a {
+    color: var(--orange);
+    font-weight: 700;
+}
