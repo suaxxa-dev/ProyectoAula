@@ -34,6 +34,7 @@ body {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    
 }
 
 .nav-container {
@@ -43,6 +44,7 @@ body {
     padding: 15px 5%;
     max-width: 1400px;
     margin: auto;
+    
 }
 
 .nav-left {
@@ -60,6 +62,7 @@ body {
     font-weight: 900;
     font-size: 1.6rem;
     color: var(--dark);
+
 }
 
 .brand-logo span {
@@ -70,6 +73,7 @@ body {
     display: flex;
     list-style: none;
     gap: 25px;
+    
 }
 
 .nav-links a {
@@ -92,6 +96,8 @@ body {
 .nav-icons {
     display: flex;
     gap: 20px;
+    
+    
 }
 
 .icon-btn {
@@ -106,6 +112,7 @@ body {
 /* 🔥 ICONOS UNIFICADOS */
 .icon-btn i {
     color: var(--dark) !important;
+    
 }
 
 .icon-btn:hover i {
