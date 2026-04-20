@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>MERCA TO-DO - Registrar Cuenta</title>
+    
+    <meta name="description" content="Página de registro de usuario para MERCA TO-DO, tu mercado digital de confianza.">
+    <meta name="keywords" content="Mercado digital, registro, MERCA TO-DO, ecommerce, tecnología, muebles, ropa">
+    <meta name="author" content="Juan Jose Suaza - suaxxa-dev">
+    
+    <link rel="icon" href="img/ICON.png" type="image/png" sizes="16x16">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/registrar.css" type="text/css">
+    <link rel="stylesheet" href="css/mainpage.css" type="text/css">
+</head>
+<body class="has-site-footer">
+
+    <main class="main-wrapper">
+        <header class="header-section">
+            <div class="logo-container">
+                <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="#E3761E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                    <path d="m3.3 7 8.7 5 8.7-5"/>
+                    <path d="M12 22V12"/>
+                </svg>
+            </div>
+            <h1 class="brand-name">MERCA<span>TO-DO</span></h1>
+            <h2 class="form-title">Registrar Cuenta</h2>
+        </header>
+
+        <section class="card-container">
+            <form action="#" method="POST" class="auth-form">
+                
+                <div class="input-field">
+                    <div class="icon-input-wrapper">
+                        <i class="fa-solid fa-user input-icon"></i>
+                        <input type="text" name="nombre" placeholder="Nombre completo" required>
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <label>Correo electrónico</label>
+                    <div class="icon-input-wrapper">
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                        <input type="email" name="email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <label>Contraseña</label>
+                    <div class="icon-input-wrapper">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" id="pass" name="password" placeholder="..........." required>
+                        <button type="button" class="view-password" onclick="togglePass('pass')">
+                            ver <i class="fa-solid fa-eye-slash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <label>Confirmar Contraseña</label>
+                    <div class="icon-input-wrapper">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" id="confirm-pass" name="confirm_password" placeholder="..........." required>
+                        <button type="button" class="view-password" onclick="togglePass('confirm-pass')">
+                            ver <i class="fa-solid fa-eye-slash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Registrarse</button>
+
+                <div class="terms-check">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Acepto los Términos de Servicio y la Política de Privacidad.</label>
+                </div>
+            </form>
+
+            <div class="hr-divider">
+                <span>o continúa con</span>
+            </div>
+
+            <div class="social-grid">
+                <button type="button" class="social-btn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Google"> Google
+                </button>
+                <button type="button" class="social-btn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/0/747.png" alt="Apple"> Apple
+                </button>
+            </div>
+        </section>
+
+        <footer class="bottom-link">
+            <p class="account-prompt">¿Ya tienes una cuenta?</p>
+            <a href="Login.html" class="btn-login-existing">Iniciar sesión</a>
+        </footer>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col info-col">
+                <h3 class="brand-logo">MERCA <span>TO-DO</span></h3>
+                <p>Somos la plataforma líder en comercio digital, conectando tus deseos con la puerta de tu casa.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>COMPRAS</h4>
+                <ul>
+                    <li><a href="catalogo.html?seccion=hombre">Hombres</a></li>
+                    <li><a href="catalogo.html?seccion=mujer">Mujeres</a></li>
+                    <li><a href="catalogo.html?cat=tecnologia">Tecnología</a></li>
+                    <li><a href="catalogo.html?ofertas=1">Ofertas del día</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AYUDA</h4>
+                <ul>
+                    <li><a href="ayuda.html">Centro de ayuda</a></li>
+                    <li><a href="cuenta.html">Rastrear pedido</a></li>
+                    <li><a href="ayuda.html#titulo-dev">Devoluciones</a></li>
+                    <li><a href="ayuda.html#titulo-contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="payment-methods">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <span class="pay-tag">NEQUI</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MERCA TO-DO. Todos los derechos reservados | Hecho por suaxxa-dev</p>
+        </div>
+    </footer>
+
+    <script>
+        function togglePass(id) {
+            const input = document.getElementById(id);
+            const btn = event.currentTarget;
+            const icon = btn.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+    </script>
+</body>
+</html>
