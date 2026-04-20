@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERCA TO-DO | Centro de información y ayuda</title>
+    <meta name="author" content="Juan Jose Suaza - suaxxa-dev">
+    <link rel="icon" href="img/ICON.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/mainpage.css">
+    <link rel="stylesheet" href="css/ayuda.css">
+</head>
+<body class="page-ayuda">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="Mainpage.html" class="brand-logo-link"><h1 class="brand-logo">MERCA <span>TO-DO</span></h1></a>
+                <ul class="nav-links">
+                    <li><a href="carrito.html">CARRITO</a></li>
+                    <li><a href="catalogo.html?seccion=hombre" data-seccion="hombre">HOMBRE</a></li>
+                    <li><a href="catalogo.html?seccion=mujer" data-seccion="mujer">MUJER</a></li>
+                    <li><a href="catalogo.html?seccion=accesorios" data-seccion="accesorios">ACCESORIOS</a></li>
+                    <li><a href="catalogo.html?seccion=deportes" data-seccion="deportes">DEPORTES</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <button type="button" class="icon-btn" id="search-trigger" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div class="profile-dropdown-wrap">
+                    <button type="button" class="icon-btn" id="profile-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="profile-menu"><i class="fa-solid fa-user"></i></button>
+                    <div class="profile-dropdown" id="profile-menu" role="menu" aria-label="Menú de cuenta">
+                        <div id="profile-menu-body"></div>
+                    </div>
+                </div>
+                <div class="cart-dropdown-wrap">
+                    <button type="button" class="icon-btn cart-btn" id="cart-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="cart-panel">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-badge" id="cart-badge-count">0</span>
+                    </button>
+                    <div class="cart-dropdown" id="cart-panel" role="dialog" aria-label="Carrito de compras">
+                        <div class="cart-dropdown-header">Tu carrito</div>
+                        <div id="cart-panel-body"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-overlay" id="search-panel">
+            <div class="search-content">
+                <div class="search-bar-input">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="¿Qué buscas hoy?" id="main-search" autocomplete="off">
+                </div>
+                <div class="search-section" id="section-suggestions">
+                    <h3>SUGERENCIAS DE PRODUCTOS</h3>
+                    <div class="suggestions-horizontal" id="results-container"></div>
+                </div>
+                <div class="search-section" id="section-sku">
+                    <h3>BÚSQUEDA POR CÓDIGO (SKU)</h3>
+                    <p class="sku-result" id="sku-display"></p>
+                </div>
+                <div class="search-section" id="section-cats">
+                    <h3>CATEGORÍAS RELACIONADAS</h3>
+                    <ul class="rel-cats" id="cats-display"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="ayuda-wrap">
+        <h1 class="ayuda-page-title">Centro de información y ayuda</h1>
+
+        <div class="ayuda-layout">
+            <aside class="ayuda-sidebar" aria-label="Secciones de ayuda">
+                <button type="button" class="ayuda-nav-btn" data-panel="sobre">
+                    <i class="fa-regular fa-square-check" aria-hidden="true"></i> Sobre nosotros
+                </button>
+                <button type="button" class="ayuda-nav-btn" data-panel="contacto">
+                    <i class="fa-solid fa-phone" aria-hidden="true"></i> Contacto
+                </button>
+                <button type="button" class="ayuda-nav-btn is-active" data-panel="faq" aria-current="page">
+                    <i class="fa-solid fa-comments" aria-hidden="true"></i> Preguntas frecuentes (FAQ)
+                </button>
+                <button type="button" class="ayuda-nav-btn" data-panel="devoluciones">
+                    <i class="fa-solid fa-arrow-rotate-left" aria-hidden="true"></i> Políticas de devolución
+                </button>
+            </aside>
+
+            <div class="ayuda-main">
+                <div class="ayuda-main-inner">
+                    <section class="ayuda-panel" id="panel-sobre" aria-labelledby="titulo-sobre">
+                        <h2 id="titulo-sobre">Sobre nosotros</h2>
+                        <div class="ayuda-hero">
+                            <div>
+                                <h3>Nuestra misión: conectar personas con lo que necesitan</h3>
+                                <p>
+                                    MERCA TO-DO es tu mercado digital de confianza. Trabajamos para ofrecer una experiencia de compra clara,
+                                    rápida y segura, acercando productos de calidad a hogares y profesionales en toda la región.
+                                </p>
+                                <p>
+                                    Apostamos por la innovación, la atención al cliente y alianzas con vendedores verificados para que cada
+                                    pedido cumpla tus expectativas.
+                                </p>
+                            </div>
+                            <div class="ayuda-team-img" role="img" aria-label="Equipo colaborando">
+                                <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="ayuda-cards">
+                            <div class="ayuda-card">
+                                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                                <h4>Confianza</h4>
+                                <p>Pagos y datos protegidos. Reputación de vendedores visible en cada ficha.</p>
+                            </div>
+                            <div class="ayuda-card">
+                                <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+                                <h4>Rapidez</h4>
+                                <p>Procesamos tu pedido con agilidad y te informamos en cada etapa del envío.</p>
+                            </div>
+                            <div class="ayuda-card">
+                                <i class="fa-solid fa-award" aria-hidden="true"></i>
+                                <h4>Calidad</h4>
+                                <p>Ofertas y categorías curadas para que compares con tranquilidad.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ayuda-panel" id="panel-contacto" aria-labelledby="titulo-contacto">
+                        <h2 id="titulo-contacto">Contacto</h2>
+                        <p>Estamos para ayudarte. Elige el canal que prefieras:</p>
+                        <ul class="ayuda-contact-list">
+                            <li>
+                                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                                <span>Correo: <a href="mailto:soporte@mercatodo.demo">soporte@mercatodo.demo</a></span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                                <span>Línea de atención: +57 (1) 234 5678 — Lun a Vie 8:00 – 18:00</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                                <span>Oficina central: Bogotá, Colombia (demo)</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="ayuda-panel is-visible" id="panel-faq" aria-labelledby="titulo-faq">
+                        <div class="ayuda-faq-heading-block">
+                            <h2 id="titulo-faq">Preguntas frecuentes (FAQ)</h2>
+                            <p class="ayuda-faq-lead">¿Tienes alguna pregunta? Encuentra las respuestas aquí.</p>
+                        </div>
+                        <div class="ayuda-faq-list">
+                            <div class="ayuda-faq-item">
+                                <button type="button" class="ayuda-faq-q" aria-expanded="false">
+                                    ¿Cómo rastreo mi envío?
+                                    <span class="faq-icon" aria-hidden="true">+</span>
+                                </button>
+                                <div class="ayuda-faq-a">
+                                    Cuando tu pedido salga de almacén recibirás un correo con el número de guía y el transportista. También puedes
+                                    revisar el estado desde <strong>Mi cuenta → Pedidos</strong> en esta demostración.
+                                </div>
+                            </div>
+                            <div class="ayuda-faq-item">
+                                <button type="button" class="ayuda-faq-q" aria-expanded="false">
+                                    ¿Venden productos originales?
+                                    <span class="faq-icon" aria-hidden="true">+</span>
+                                </button>
+                                <div class="ayuda-faq-a">
+                                    Trabajamos con vendedores que declaran el origen de sus artículos. Te recomendamos revisar la ficha técnica,
+                                    fotos y opiniones de otros compradores antes de decidir.
+                                </div>
+                            </div>
+                            <div class="ayuda-faq-item">
+                                <button type="button" class="ayuda-faq-q" aria-expanded="false">
+                                    ¿Hacen envíos internacionales?
+                                    <span class="faq-icon" aria-hidden="true">+</span>
+                                </button>
+                                <div class="ayuda-faq-a">
+                                    En esta demo los envíos son nacionales. La disponibilidad según ciudad se confirmará al finalizar la compra
+                                    en la pasarela de pago (simulada).
+                                </div>
+                            </div>
+                            <div class="ayuda-faq-item">
+                                <button type="button" class="ayuda-faq-q" aria-expanded="false">
+                                    ¿Cuál es la política de devolución?
+                                    <span class="faq-icon" aria-hidden="true">+</span>
+                                </button>
+                                <div class="ayuda-faq-a">
+                                    Dispones de hasta 30 días naturales desde la entrega para solicitar una devolución si el producto está en
+                                    condiciones aceptables. Consulta el apartado <strong>Políticas de devolución</strong> en este mismo centro
+                                    de ayuda para el detalle.
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ayuda-panel" id="panel-devoluciones" aria-labelledby="titulo-dev">
+                        <h2 id="titulo-dev">Políticas de devolución</h2>
+                        <h3>Plazo</h3>
+                        <p>
+                            Hasta 30 días naturales desde la entrega, con producto en condiciones aceptables y empaque original cuando aplique.
+                        </p>
+                        <h3>Proceso</h3>
+                        <p>
+                            Contacta a soporte con tu número de pedido y el motivo. Evaluaremos reembolso, cambio o garantía del fabricante.
+                        </p>
+                        <h3>Excepciones</h3>
+                        <p>
+                            Productos personalizados, contenido digital ya entregado o artículos de higiene sellados pueden tener restricciones
+                            según normativa aplicable.
+                        </p>
+                    </section>
+                </div>
+
+                <div class="ayuda-cta-bar">
+                    <p>¿Aún tienes dudas? Contactar a soporte</p>
+                    <div class="ayuda-cta-actions">
+                        <button type="button" class="btn-ayuda-msg" id="ayuda-btn-mensaje">Enviar un mensaje</button>
+                        <div class="ayuda-cta-icons">
+                            <a href="https://wa.me/573001234567" class="wa" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="mailto:soporte@mercatodo.demo" class="mail" aria-label="Correo electrónico"><i class="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col info-col">
+                <h3 class="brand-logo">MERCA <span>TO-DO</span></h3>
+                <p>Somos la plataforma líder en comercio digital, conectando tus deseos con la puerta de tu casa.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>COMPRAS</h4>
+                <ul>
+                    <li><a href="catalogo.html?seccion=hombre">Hombres</a></li>
+                    <li><a href="catalogo.html?seccion=mujer">Mujeres</a></li>
+                    <li><a href="catalogo.html?cat=tecnologia">Tecnología</a></li>
+                    <li><a href="catalogo.html?ofertas=1">Ofertas del día</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AYUDA</h4>
+                <ul>
+                    <li><a href="ayuda.html">Centro de ayuda</a></li>
+                    <li><a href="cuenta.html">Rastrear pedido</a></li>
+                    <li><a href="ayuda.html#titulo-dev">Devoluciones</a></li>
+                    <li><a href="ayuda.html#titulo-contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="payment-methods">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <span class="pay-tag">NEQUI</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MERCA TO-DO. Todos los derechos reservados | Hecho por suaxxa-dev</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/productos-data.js"></script>
+    <script src="js/ayuda.js"></script>
+</body>
+</html>

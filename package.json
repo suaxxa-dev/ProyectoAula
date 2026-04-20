@@ -1,0 +1,18 @@
+{
+  "name": "mercatodo",
+  "version": "1.0.0",
+  "description": "MERCA TO-DO - Plataforma e-commerce con Node.js + SQLite",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "author": "suaxxa-dev",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.0",
+    "express-session": "^1.18.1",
+    "sql.js": "^1.11.0"
+  }
+}
