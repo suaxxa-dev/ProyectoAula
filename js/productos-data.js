@@ -26,7 +26,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.5,
         opiniones: 89,
         precioNum: 156.09,
-        precioLabel: '$156.09',
+        precioLabel: '$ 624.360',
         precioAnterior: 199.99,
         descripcion:
             'Portátil ideal para estudio y trabajo con pantalla Full HD, gran autonomía y diseño ligero. Perfecto para multitarea diaria, videollamadas y productividad con Windows 11.',
@@ -56,7 +56,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.8,
         opiniones: 120,
         precioNum: 899.0,
-        precioLabel: '$899.00',
+        precioLabel: '$ 3.596.000',
         precioAnterior: 1049.0,
         descripcion:
             'Smartphone flagship con pantalla AMOLTED fluida, cámara versátil y rendimiento de última generación. Batería de larga duración y carga rápida para todo el día.',
@@ -87,7 +87,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.9,
         opiniones: 256,
         precioNum: 549.99,
-        precioLabel: '$549.99',
+        precioLabel: '$ 2.199.960',
         precioAnterior: 599.0,
         descripcion:
             'Tablet ultradelgada con chip potente, compatible con Apple Pencil y teclado. Ideal para creativos, estudiantes y quienes buscan productividad móvil.',
@@ -116,7 +116,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.6,
         opiniones: 67,
         precioNum: 329.5,
-        precioLabel: '$329.50',
+        precioLabel: '$ 1.318.000',
         precioAnterior: 379.0,
         descripcion:
             'Monitor panorámico 21:9 para multitarea, edición y gaming casual. Colores precisos y marcos finos para un escritorio limpio.',
@@ -144,7 +144,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.7,
         opiniones: 142,
         precioNum: 79.99,
-        precioLabel: '$79.99',
+        precioLabel: '$ 319.960',
         precioAnterior: 94.99,
         descripcion:
             'Sonido envolvente con bajos profundos y micrófono integrado para llamadas nítidas. Plegables, cómodos para sesiones largas y batería de hasta 30 h.',
@@ -173,7 +173,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.4,
         opiniones: 54,
         precioNum: 124.0,
-        precioLabel: '$124.00',
+        precioLabel: '$ 496.000',
         descripcion:
             'Switches mecánicos con retroiluminación RGB personalizable. Diseño compacto sin teclado numérico, ideal para gaming y escritura prolongada.',
         imagenes: ['img/cat-tecnologia-teclado-mecanico.jpg', 'img/cat-tecnologia-teclado-mecanico.jpg'],
@@ -200,7 +200,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.6,
         opiniones: 38,
         precioNum: 689.0,
-        precioLabel: '$689.00',
+        precioLabel: '$ 2.756.000',
         precioAnterior: 799.0,
         descripcion:
             'Sofá modular con tapizado en tela suave y estructura reforzada. Combina comodidad y estilo nórdico para salas amplias o espacios abiertos.',
@@ -230,7 +230,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.3,
         opiniones: 29,
         precioNum: 89.99,
-        precioLabel: '$89.99',
+        precioLabel: '$ 359.960',
         descripcion:
             'Luz cálida y fría ajustable con brazo articulado. Base estable y consumo bajo ideal para lectura o ambiente.',
         imagenes: ['img/cat-hogar-lampara-pie.jpg', 'img/cat-hogar-lampara-pie.jpg'],
@@ -256,7 +256,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.7,
         opiniones: 91,
         precioNum: 215.0,
-        precioLabel: '$215.00',
+        precioLabel: '$ 860.000',
         precioAnterior: 249.0,
         descripcion:
             'Cafetera espresso semiautomática con presión estable y vaporizador para leche. Acabados en acero inoxidable y bandeja recoge-gotas extraíble.',
@@ -285,7 +285,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.5,
         opiniones: 44,
         precioNum: 48.5,
-        precioLabel: '$48.50',
+        precioLabel: '$ 194.000',
         descripcion:
             'Percal 100% algodón transpirable. Incluye bajera ajustable, encimera y fundas de almohada. Suave al tacto y fácil de lavar.',
         imagenes: ['img/cat-hogar-sabanas.jpg', 'img/cat-hogar-sabanas.jpg'],
@@ -312,7 +312,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.2,
         opiniones: 18,
         precioNum: 34.99,
-        precioLabel: '$34.99',
+        precioLabel: '$ 139.960',
         descripcion:
             'Set de cajones apilables para despensa y nevera. Plástico libre de BPA y fácil de limpiar.',
         imagenes: ['img/cat-hogar-organizador.jpg', 'img/cat-hogar-organizador.jpg'],
@@ -337,7 +337,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.1,
         opiniones: 22,
         precioNum: 129.0,
-        precioLabel: '$129.00',
+        precioLabel: '$ 516.000',
         precioAnterior: 159.0,
         descripcion:
             'Fibra sintética suave y fácil de aspirar. Reverso antideslizante. Ideal para salón bajo mesa de centro.',
@@ -363,7 +363,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.4,
         opiniones: 201,
         precioNum: 24.99,
-        precioLabel: '$24.99',
+        precioLabel: '$ 99.960',
         descripcion:
             'Corte regular, cuello redondo reforzado. Algodón peinado transpirable para uso diario.',
         imagenes: ['img/cat-moda-camiseta-basica.jpg', 'img/cat-moda-camiseta-basica.jpg'],
@@ -391,7 +391,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.8,
         opiniones: 312,
         precioNum: 119.0,
-        precioLabel: '$119.00',
+        precioLabel: '$ 476.000',
         precioAnterior: 139.0,
         descripcion:
             'Amortiguación reactiva y malla transpirable. Suela con buen agarre en asfalto y cinta. Ideal para entrenamientos 5–15 km.',
@@ -423,7 +423,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.3,
         opiniones: 56,
         precioNum: 79.5,
-        precioLabel: '$79.50',
+        precioLabel: '$ 318.000',
         descripcion:
             'Denim medio con algo de elastano para movimiento. Botones metálicos y bolsillos funcionales.',
         imagenes: ['img/cat-moda-chaqueta-denim.jpg', 'img/cat-moda-chaqueta-denim.jpg'],
@@ -448,7 +448,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.6,
         opiniones: 88,
         precioNum: 45.0,
-        precioLabel: '$45.00',
+        precioLabel: '$ 180.000',
         descripcion:
             'Gran capacidad con compartimento para portátil 13". Asas resistentes y cierre magnético.',
         imagenes: ['img/cat-moda-bolso-tote.jpg', 'img/cat-moda-bolso-tote.jpg'],
@@ -472,7 +472,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.0,
         opiniones: 41,
         precioNum: 59.99,
-        precioLabel: '$59.99',
+        precioLabel: '$ 239.960',
         descripcion:
             'Movimiento de cuarzo con correa de silicona o malla milanesa según stock. Resistente a salpicaduras.',
         imagenes: ['img/cat-moda-reloj-casual.jpg', 'img/cat-moda-reloj-casual.jpg'],
@@ -497,7 +497,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.5,
         opiniones: 73,
         precioNum: 22.0,
-        precioLabel: '$22.00',
+        precioLabel: '$ 88.000',
         descripcion:
             'Visera curva, transpirable y cierre snapback. Logo bordado.',
         imagenes: ['img/cat-moda-gorra.jpg', 'img/cat-moda-gorra.jpg'],
@@ -522,7 +522,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.7,
         opiniones: 95,
         precioNum: 149.99,
-        precioLabel: '$149.99',
+        precioLabel: '$ 599.960',
         precioAnterior: 179.0,
         descripcion:
             'Motor brushless de larga vida, mandril metálico y dos baterías incluidas. Ideal para bricolaje y montaje de muebles.',
@@ -551,7 +551,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.4,
         opiniones: 33,
         precioNum: 64.5,
-        precioLabel: '$64.50',
+        precioLabel: '$ 258.000',
         descripcion:
             'Acero al cromo-vanadio con acabado mate. Numeración láser en cada pieza y estuche enrollable.',
         imagenes: ['img/cat-herr-set-llaves.jpg', 'img/cat-herr-set-llaves.jpg'],
@@ -575,7 +575,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.5,
         opiniones: 47,
         precioNum: 98.0,
-        precioLabel: '$98.00',
+        precioLabel: '$ 392.000',
         descripcion:
             'Corte recto y curvo en madera y laminados. Velocidad variable y aspiración de polvo opcional.',
         imagenes: ['img/cat-herr-sierra-caladora.jpg', 'img/cat-herr-sierra-caladora.jpg'],
@@ -599,7 +599,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.2,
         opiniones: 19,
         precioNum: 42.99,
-        precioLabel: '$42.99',
+        precioLabel: '$ 171.960',
         descripcion:
             'Cierre metálico, bandeja superior extraíble y asa ergonómica. Para almacenar brocas, tornillos y herramientas manuales.',
         imagenes: ['img/cat-herr-caja-herramientas.jpg', 'img/cat-herr-caja-herramientas.jpg'],
@@ -623,7 +623,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.8,
         opiniones: 61,
         precioNum: 54.0,
-        precioLabel: '$54.00',
+        precioLabel: '$ 216.000',
         descripcion:
             'Autonivelación ±4° con trípode rosca 1/4". Ideal para colgar estanterías y azulejos.',
         imagenes: ['img/cat-herr-nivel-laser.jpg', 'img/cat-herr-nivel-laser.jpg'],
@@ -647,7 +647,7 @@ var PRODUCTOS_FICHA = {
         rating: 4.3,
         opiniones: 27,
         precioNum: 31.5,
-        precioLabel: '$31.50',
+        precioLabel: '$ 126.000',
         descripcion:
             'Medición de tensión, corriente y resistencia con protección en entradas. Pantalla retroiluminada.',
         imagenes: ['img/cat-herr-multimetro.jpg', 'img/cat-herr-multimetro.jpg'],
@@ -664,5 +664,83 @@ var PRODUCTOS_FICHA = {
         ],
         opinionesHtml: '<p>Imprescindible para <strong>revisar instalaciones</strong>.</p>',
         relacionados: ['cat-herr-nivel-laser', 'cat-herr-taladro-inalambrico', 'cat-herr-set-llaves', 'cat-herr-sierra-caladora', 'cat-herr-caja-herramientas'],
+    },
+    'asics-sky-elite': {
+        breadcrumb: ['Deportes', 'Calzado', 'Asics'],
+        titulo: 'ASICS SKY ELITE FF 2 AZUL',
+        rating: 4.8,
+        opiniones: 156,
+        precioNum: 159.99,
+        precioLabel: '$ 639.960',
+        precioAnterior: 180.0,
+        descripcion:
+            'Diseñadas para atacantes y bloqueadores, estas zapatillas ofrecen una excelente amortiguación y retorno de energía. La tecnología TWISTRUSS ayuda a realizar movimientos laterales rápidos sin perder estabilidad.',
+        imagenes: ['img/asics.jpg', 'img/asics.jpg'],
+        miniaturas: ['img/asics.jpg', 'img/asics.jpg', 'img/asics.jpg'],
+        colores: [
+            { nombre: 'Azul / Amarillo', hex: '#0047ab' },
+        ],
+        tallas: ['8', '8.5', '9', '9.5', '10', '11'],
+        vendedor: { nombre: 'suaza', estrella: true, badge: 'Vendedor destacado' },
+        caracteristicas: ['Tecnología FLYTEFOAM Propel', 'Suela para máxima tracción', 'Estabilidad TWISTRUSS', 'Ajuste dinámico'],
+        especificaciones: [
+            { k: 'Deporte', v: 'Voleibol / Balonmano' },
+            { k: 'Tipo de pisada', v: 'Neutra' },
+            { k: 'Peso', v: '320 g' },
+            { k: 'Tecnología', v: 'Twistruss / Flytefoam' },
+        ],
+        opinionesHtml: '<p><strong>156 opiniones</strong>. Excelente para salto y comodidad en pista.</p>',
+        relacionados: ['camiseta-colombia', 'straps-gym', 'cat-moda-tenis-urbanos', 'cat-moda-gorra'],
+    },
+    'airpods-pro-2': {
+        breadcrumb: ['Tecnología', 'Audio', 'Apple'],
+        titulo: 'AirPods Pro (2.ª generación) con MagSafe',
+        rating: 4.9,
+        opiniones: 842,
+        precioNum: 249.0,
+        precioLabel: '$ 996.000',
+        precioAnterior: 269.0,
+        descripcion:
+            'Los AirPods Pro han sido rediseñados para ofrecer una calidad de sonido aún mejor. La Cancelación Activa de Ruido de nueva generación y el modo de Sonido Ambiente Adaptativo reducen más el ruido exterior.',
+        imagenes: ['img/airpods.jpg', 'img/airpods.jpg'],
+        miniaturas: ['img/airpods.jpg', 'img/airpods.jpg', 'img/airpods.jpg'],
+        colores: [
+            { nombre: 'Blanco', hex: '#ffffff' },
+        ],
+        vendedor: { nombre: 'suaza', estrella: true, badge: 'Mayor número de ventas' },
+        caracteristicas: ['Chip H2', 'Cancelación Activa de Ruido', 'Audio Espacial Personalizado', 'Resistencia al sudor IPX4'],
+        especificaciones: [
+            { k: 'Chip', v: 'Chip H2 de Apple' },
+            { k: 'Conexión', v: 'Bluetooth 5.3' },
+            { k: 'Autonomía', v: 'Hasta 6h (30h con estuche)' },
+            { k: 'Carga', v: 'MagSafe / USB-C' },
+        ],
+        opinionesHtml: '<p>La mejor cancelación de ruido del mercado. <strong>842 reseñas positivas.</strong></p>',
+        relacionados: ['cat-tecnologia-audifonos-bt', 'cat-tecnologia-samsung-phone', 'cat-tecnologia-apple-tablet', 'cat-tecnologia-teclado-mecanico'],
+    },
+    'straps-gym': {
+        breadcrumb: ['Accesorios', 'Gimnasio', 'Straps'],
+        titulo: 'Straps para Levantamiento de Pesas',
+        rating: 4.7,
+        opiniones: 215,
+        precioNum: 24.99,
+        precioLabel: '$ 99.960',
+        descripcion:
+            'Correas de levantamiento profesionales con acolchado de neopreno. Mejora tu agarre en ejercicios pesados como peso muerto y remo, permitiéndote concentrarte en el músculo objetivo.',
+        imagenes: ['img/straps-gym.jpg', 'img/straps-gym.jpg'],
+        miniaturas: ['img/straps-gym.jpg', 'img/straps-gym.jpg', 'img/straps-gym.jpg'],
+        colores: [
+            { nombre: 'Negro', hex: '#000000' },
+        ],
+        vendedor: { nombre: 'suaza', estrella: true, badge: 'Vendedor confiable' },
+        caracteristicas: ['Acolchado de neopreno', 'Algodón de alta resistencia', 'Longitud extendida', 'Antideslizante'],
+        especificaciones: [
+            { k: 'Material', v: 'Algodón / Neopreno' },
+            { k: 'Largo', v: '21 pulgadas' },
+            { k: 'Ancho', v: '1.5 pulgadas' },
+            { k: 'Uso', v: 'Culturismo / Powerlifting' },
+        ],
+        opinionesHtml: '<p>Duraderas y cómodas para <strong>pesos máximos</strong>.</p>',
+        relacionados: ['asics-sky-elite', 'cat-moda-gorra', 'cat-moda-camiseta-basica', 'camiseta-colombia'],
     },
 };

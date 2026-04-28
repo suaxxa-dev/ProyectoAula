@@ -21,6 +21,8 @@
         hogar: 'HOGAR',
         moda: 'MODA',
         herramientas: 'HERRAMIENTAS',
+        deportes: 'DEPORTES',
+        accesorios: 'ACCESORIOS',
     };
 
     /** Claves URL: catalogo.html?seccion=hombre|mujer|accesorios|deportes */
@@ -71,36 +73,44 @@
      */
     var CATALOG = {
         tecnologia: [
-            { id: 'cat-tecnologia-dell-laptop', nombre: 'Dell Laptop', precioNum: 156.09, precioLabel: '$156.09', img: 'img/cat-tecnologia-dell-laptop.jpg', stars: 5, descPct: 22, promoBadge: '-20% hoy', marca: 'Dell', tipo: 'usado', temas: ['entretenimiento', 'electro'], secciones: ['hombre', 'mujer'] },
-            { id: 'cat-tecnologia-samsung-phone', nombre: 'Samsung Smartphone', precioNum: 899.0, precioLabel: '$899.00', img: 'img/cat-tecnologia-samsung-phone.jpg', stars: 5, descPct: 15, promoBadge: '-30% hoy', marca: 'Samsung', tipo: 'nuevo', temas: ['entretenimiento', 'futbol'], secciones: ['hombre', 'mujer', 'accesorios', 'deportes'] },
-            { id: 'cat-tecnologia-apple-tablet', nombre: 'Apple Tablet', precioNum: 549.99, precioLabel: '$549.99', img: 'img/cat-tecnologia-apple-tablet.jpg', stars: 5, descPct: 18, marca: 'Apple', tipo: 'reacondicionado', temas: ['entretenimiento'], secciones: ['hombre', 'mujer', 'accesorios'] },
-            { id: 'cat-tecnologia-monitor-lg', nombre: 'Monitor LG UltraWide', precioNum: 329.5, precioLabel: '$329.50', img: 'img/cat-tecnologia-monitor-lg.jpg', stars: 4, marca: 'LG', tipo: 'nuevo', temas: ['entretenimiento', 'electro'], secciones: ['hombre', 'mujer'] },
-            { id: 'cat-tecnologia-audifonos-bt', nombre: 'Auriculares Bluetooth', precioNum: 79.99, precioLabel: '$79.99', img: 'img/cat-tecnologia-audifonos-bt.jpg', stars: 4, promoBadge: '-15% hoy', marca: 'Xiaomi', tipo: 'nuevo', temas: ['entretenimiento', 'futbol'], secciones: ['hombre', 'mujer', 'accesorios', 'deportes'] },
-            { id: 'cat-tecnologia-teclado-mecanico', nombre: 'Teclado mecánico RGB', precioNum: 124.0, precioLabel: '$124.00', img: 'img/cat-tecnologia-teclado-mecanico.jpg', stars: 5, marca: 'Lenovo', tipo: 'nuevo', temas: ['entretenimiento', 'futbol'], secciones: ['hombre', 'mujer', 'accesorios', 'deportes'] },
+            { id: 'cat-tecnologia-dell-laptop', nombre: 'Dell Laptop', precioNum: 156.09, precioLabel: '$ 624.360', img: 'img/cat-tecnologia-dell-laptop.jpg', stars: 5, descPct: 22, promoBadge: '-20% hoy', marca: 'Dell', tipo: 'usado', temas: ['entretenimiento', 'electro'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-tecnologia-samsung-phone', nombre: 'Samsung Smartphone', precioNum: 899.0, precioLabel: '$ 3.596.000', img: 'img/cat-tecnologia-samsung-phone.jpg', stars: 5, descPct: 15, promoBadge: '-30% hoy', marca: 'Samsung', tipo: 'nuevo', temas: ['entretenimiento', 'futbol'], secciones: ['hombre', 'mujer', 'accesorios', 'deportes'] },
+            { id: 'cat-tecnologia-apple-tablet', nombre: 'Apple Tablet', precioNum: 549.99, precioLabel: '$ 2.199.960', img: 'img/cat-tecnologia-apple-tablet.jpg', stars: 5, descPct: 18, marca: 'Apple', tipo: 'reacondicionado', temas: ['entretenimiento'], secciones: ['hombre', 'mujer', 'accesorios'] },
+            { id: 'cat-tecnologia-monitor-lg', nombre: 'Monitor LG UltraWide', precioNum: 329.5, precioLabel: '$ 1.318.000', img: 'img/cat-tecnologia-monitor-lg.jpg', stars: 4, marca: 'LG', tipo: 'nuevo', temas: ['entretenimiento', 'electro'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-tecnologia-audifonos-bt', nombre: 'Auriculares Bluetooth', precioNum: 79.99, precioLabel: '$ 319.960', img: 'img/cat-tecnologia-audifonos-bt.jpg', stars: 4, promoBadge: '-15% hoy', marca: 'Xiaomi', tipo: 'nuevo', temas: ['entretenimiento', 'futbol'], secciones: ['hombre', 'mujer', 'accesorios', 'deportes'] },
+            { id: 'cat-tecnologia-teclado-mecanico', nombre: 'Teclado mecánico RGB', precioNum: 124.0, precioLabel: '$ 496.000', img: 'img/cat-tecnologia-teclado-mecanico.jpg', stars: 5, marca: 'Lenovo', tipo: 'nuevo', temas: ['entretenimiento', 'futbol'], secciones: ['hombre', 'mujer', 'accesorios', 'deportes'] },
         ],
         hogar: [
-            { id: 'cat-hogar-sofa-modular', nombre: 'Sofá modular 3 puestos', precioNum: 689.0, precioLabel: '$689.00', img: 'img/cat-hogar-sofa-modular.jpg', stars: 5, descPct: 12, marca: 'IKEA', tipo: 'nuevo', temas: ['sala', 'decoracion'], secciones: ['hombre', 'mujer'] },
-            { id: 'cat-hogar-lampara-pie', nombre: 'Lámpara de pie LED', precioNum: 89.99, precioLabel: '$89.99', img: 'img/cat-hogar-lampara-pie.jpg', stars: 4, promoBadge: '-10% hoy', marca: 'Philips', tipo: 'nuevo', temas: ['decoracion', 'sala'], secciones: ['hombre', 'mujer', 'accesorios'] },
-            { id: 'cat-hogar-cafetera-espresso', nombre: 'Cafetera espresso', precioNum: 215.0, precioLabel: '$215.00', img: 'img/cat-hogar-cafetera-espresso.jpg', stars: 5, marca: 'Black+Decker', tipo: 'nuevo', temas: ['cocina'], secciones: ['hombre', 'mujer'] },
-            { id: 'cat-hogar-sabanas', nombre: 'Juego de sábanas king', precioNum: 48.5, precioLabel: '$48.50', img: 'img/cat-hogar-sabanas.jpg', stars: 4, marca: 'Nitori', tipo: 'nuevo', temas: ['dormitorio'], secciones: ['hombre', 'mujer'] },
-            { id: 'cat-hogar-organizador', nombre: 'Organizador de cocina', precioNum: 34.99, precioLabel: '$34.99', img: 'img/cat-hogar-organizador.jpg', stars: 4, marca: 'IKEA', tipo: 'usado', temas: ['cocina'], secciones: ['hombre', 'mujer'] },
-            { id: 'cat-hogar-alfombra', nombre: 'Alfombra sala 160×230', precioNum: 129.0, precioLabel: '$129.00', img: 'img/cat-hogar-alfombra.jpg', stars: 3, descPct: 20, marca: 'Otros', tipo: 'nuevo', temas: ['decoracion', 'sala'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-hogar-sofa-modular', nombre: 'Sofá modular 3 puestos', precioNum: 689.0, precioLabel: '$ 2.756.000', img: 'img/cat-hogar-sofa-modular.jpg', stars: 5, descPct: 12, marca: 'IKEA', tipo: 'nuevo', temas: ['sala', 'decoracion'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-hogar-lampara-pie', nombre: 'Lámpara de pie LED', precioNum: 89.99, precioLabel: '$ 359.960', img: 'img/cat-hogar-lampara-pie.jpg', stars: 4, promoBadge: '-10% hoy', marca: 'Philips', tipo: 'nuevo', temas: ['decoracion', 'sala'], secciones: ['hombre', 'mujer', 'accesorios'] },
+            { id: 'cat-hogar-cafetera-espresso', nombre: 'Cafetera espresso', precioNum: 215.0, precioLabel: '$ 860.000', img: 'img/cat-hogar-cafetera-espresso.jpg', stars: 5, marca: 'Black+Decker', tipo: 'nuevo', temas: ['cocina'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-hogar-sabanas', nombre: 'Juego de sábanas king', precioNum: 48.5, precioLabel: '$ 194.000', img: 'img/cat-hogar-sabanas.jpg', stars: 4, marca: 'Nitori', tipo: 'nuevo', temas: ['dormitorio'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-hogar-organizador', nombre: 'Organizador de cocina', precioNum: 34.99, precioLabel: '$ 139.960', img: 'img/cat-hogar-organizador.jpg', stars: 4, marca: 'IKEA', tipo: 'usado', temas: ['cocina'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-hogar-alfombra', nombre: 'Alfombra sala 160×230', precioNum: 129.0, precioLabel: '$ 516.000', img: 'img/cat-hogar-alfombra.jpg', stars: 3, descPct: 20, marca: 'Otros', tipo: 'nuevo', temas: ['decoracion', 'sala'], secciones: ['hombre', 'mujer'] },
         ],
         moda: [
-            { id: 'cat-moda-camiseta-basica', nombre: 'Camiseta básica algodón', precioNum: 24.99, precioLabel: '$24.99', img: 'img/cat-moda-camiseta-basica.jpg', stars: 4, marca: 'Zara', tipo: 'nuevo', temas: ['ropa'], secciones: ['hombre', 'mujer', 'deportes'] },
-            { id: 'cat-moda-tenis-urbanos', nombre: 'Tenis urbanos unisex', precioNum: 119.0, precioLabel: '$119.00', img: 'img/cat-moda-tenis-urbanos.jpg', stars: 5, promoBadge: '-25% hoy', marca: 'Nike', tipo: 'nuevo', temas: ['calzado'], secciones: ['hombre', 'mujer', 'deportes'] },
-            { id: 'cat-moda-chaqueta-denim', nombre: 'Chaqueta denim', precioNum: 79.5, precioLabel: '$79.50', img: 'img/cat-moda-chaqueta-denim.jpg', stars: 4, descPct: 14, marca: 'Adidas', tipo: 'usado', temas: ['ropa'], secciones: ['hombre', 'mujer'] },
-            { id: 'cat-moda-bolso-tote', nombre: 'Bolso tote ecocuero', precioNum: 45.0, precioLabel: '$45.00', img: 'img/cat-moda-bolso-tote.jpg', stars: 5, marca: 'Zara', tipo: 'nuevo', temas: ['accesorios'], secciones: ['mujer', 'accesorios'] },
-            { id: 'cat-moda-reloj-casual', nombre: 'Reloj casual', precioNum: 59.99, precioLabel: '$59.99', img: 'img/cat-moda-reloj-casual.jpg', stars: 4, marca: 'Otros', tipo: 'reacondicionado', temas: ['accesorios'], secciones: ['hombre', 'mujer', 'accesorios'] },
-            { id: 'cat-moda-gorra', nombre: 'Gorra deportiva', precioNum: 22.0, precioLabel: '$22.00', img: 'img/cat-moda-gorra.jpg', stars: 5, marca: 'Reebok', tipo: 'nuevo', temas: ['ropa', 'accesorios'], secciones: ['hombre', 'mujer', 'accesorios', 'deportes'] },
+            { id: 'cat-moda-camiseta-basica', nombre: 'Camiseta básica algodón', precioNum: 24.99, precioLabel: '$ 99.960', img: 'img/cat-moda-camiseta-basica.jpg', stars: 4, marca: 'Zara', tipo: 'nuevo', temas: ['ropa'], secciones: ['hombre', 'mujer', 'deportes'] },
+            { id: 'cat-moda-tenis-urbanos', nombre: 'Tenis urbanos unisex', precioNum: 119.0, precioLabel: '$ 476.000', img: 'img/cat-moda-tenis-urbanos.jpg', stars: 5, promoBadge: '-25% hoy', marca: 'Nike', tipo: 'nuevo', temas: ['calzado'], secciones: ['hombre', 'mujer', 'deportes'] },
+            { id: 'cat-moda-chaqueta-denim', nombre: 'Chaqueta denim', precioNum: 79.5, precioLabel: '$ 318.000', img: 'img/cat-moda-chaqueta-denim.jpg', stars: 4, descPct: 14, marca: 'Adidas', tipo: 'usado', temas: ['ropa'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-moda-bolso-tote', nombre: 'Bolso tote ecocuero', precioNum: 45.0, precioLabel: '$ 180.000', img: 'img/cat-moda-bolso-tote.jpg', stars: 5, marca: 'Zara', tipo: 'nuevo', temas: ['accesorios'], secciones: ['mujer', 'accesorios'] },
+            { id: 'cat-moda-reloj-casual', nombre: 'Reloj casual', precioNum: 59.99, precioLabel: '$ 239.960', img: 'img/cat-moda-reloj-casual.jpg', stars: 4, marca: 'Otros', tipo: 'reacondicionado', temas: ['accesorios'], secciones: ['hombre', 'mujer', 'accesorios'] },
+            { id: 'cat-moda-gorra', nombre: 'Gorra deportiva', precioNum: 22.0, precioLabel: '$ 88.000', img: 'img/cat-moda-gorra.jpg', stars: 5, marca: 'Reebok', tipo: 'nuevo', temas: ['ropa', 'accesorios'], secciones: ['hombre', 'mujer', 'accesorios', 'deportes'] },
         ],
         herramientas: [
-            { id: 'cat-herr-taladro-inalambrico', nombre: 'Taladro inalámbrico 18V', precioNum: 149.99, precioLabel: '$149.99', img: 'img/cat-herr-taladro-inalambrico.jpg', stars: 5, descPct: 18, marca: 'Bosch', tipo: 'nuevo', temas: ['electricas'], secciones: ['hombre', 'mujer'] },
-            { id: 'cat-herr-set-llaves', nombre: 'Set llaves combinadas', precioNum: 64.5, precioLabel: '$64.50', img: 'img/cat-herr-set-llaves.jpg', stars: 4, promoBadge: '-12% hoy', marca: 'Stanley', tipo: 'usado', temas: ['manuales'], secciones: ['hombre', 'mujer'] },
-            { id: 'cat-herr-sierra-caladora', nombre: 'Sierra caladora 750W', precioNum: 98.0, precioLabel: '$98.00', img: 'img/cat-herr-sierra-caladora.jpg', stars: 4, marca: 'DeWalt', tipo: 'nuevo', temas: ['electricas'], secciones: ['hombre', 'mujer'] },
-            { id: 'cat-herr-caja-herramientas', nombre: 'Caja de herramientas nivel', precioNum: 42.99, precioLabel: '$42.99', img: 'img/cat-herr-caja-herramientas.jpg', stars: 5, marca: 'Stanley', tipo: 'nuevo', temas: ['manuales'], secciones: ['hombre', 'mujer'] },
-            { id: 'cat-herr-nivel-laser', nombre: 'Nivel láser cruz', precioNum: 54.0, precioLabel: '$54.00', img: 'img/cat-herr-nivel-laser.jpg', stars: 5, marca: 'Bosch', tipo: 'nuevo', temas: ['medicion', 'electricas'], secciones: ['hombre', 'mujer', 'accesorios'] },
-            { id: 'cat-herr-multimetro', nombre: 'Multímetro digital', precioNum: 31.5, precioLabel: '$31.50', img: 'img/cat-herr-multimetro.jpg', stars: 4, descPct: 8, marca: 'Makita', tipo: 'reacondicionado', temas: ['medicion'], secciones: ['hombre', 'mujer', 'accesorios'] },
+            { id: 'cat-herr-taladro-inalambrico', nombre: 'Taladro inalámbrico 18V', precioNum: 149.99, precioLabel: '$ 599.960', img: 'img/cat-herr-taladro-inalambrico.jpg', stars: 5, descPct: 18, marca: 'Bosch', tipo: 'nuevo', temas: ['electricas'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-herr-set-llaves', nombre: 'Set llaves combinadas', precioNum: 64.5, precioLabel: '$ 258.000', img: 'img/cat-herr-set-llaves.jpg', stars: 4, promoBadge: '-12% hoy', marca: 'Stanley', tipo: 'usado', temas: ['manuales'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-herr-sierra-caladora', nombre: 'Sierra caladora 750W', precioNum: 98.0, precioLabel: '$ 392.000', img: 'img/cat-herr-sierra-caladora.jpg', stars: 4, marca: 'DeWalt', tipo: 'nuevo', temas: ['electricas'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-herr-caja-herramientas', nombre: 'Caja de herramientas nivel', precioNum: 42.99, precioLabel: '$ 171.960', img: 'img/cat-herr-caja-herramientas.jpg', stars: 5, marca: 'Stanley', tipo: 'nuevo', temas: ['manuales'], secciones: ['hombre', 'mujer'] },
+            { id: 'cat-herr-nivel-laser', nombre: 'Nivel láser cruz', precioNum: 54.0, precioLabel: '$ 216.000', img: 'img/cat-herr-nivel-laser.jpg', stars: 5, marca: 'Bosch', tipo: 'nuevo', temas: ['medicion', 'electricas'], secciones: ['hombre', 'mujer', 'accesorios'] },
+            { id: 'cat-herr-multimetro', nombre: 'Multímetro digital', precioNum: 31.5, precioLabel: '$ 126.000', img: 'img/cat-herr-multimetro.jpg', stars: 4, descPct: 8, marca: 'Makita', tipo: 'reacondicionado', temas: ['medicion'], secciones: ['hombre', 'mujer', 'accesorios'] },
+        ],
+        deportes: [
+            { id: 'asics-sky-elite', nombre: 'ASICS SKY ELITE FF 2', precioNum: 159.99, precioLabel: '$ 639.960', img: 'img/asics.jpg', stars: 5, descPct: 11, marca: 'Asics', tipo: 'nuevo', temas: ['calzado'], secciones: ['hombre', 'mujer', 'deportes'] },
+            { id: 'camiseta-colombia', nombre: 'Camiseta Colombia', precioNum: 89.99, precioLabel: '$ 359.960', img: 'img/camiseta-colombia.jpg', stars: 5, marca: 'Adidas', tipo: 'nuevo', temas: ['ropa'], secciones: ['hombre', 'mujer', 'deportes'] },
+        ],
+        accesorios: [
+            { id: 'airpods-pro-2', nombre: 'AirPods Pro 2', precioNum: 249.0, precioLabel: '$ 996.000', img: 'img/airpods.jpg', stars: 5, descPct: 7, marca: 'Apple', tipo: 'nuevo', temas: ['entretenimiento'], secciones: ['hombre', 'mujer', 'accesorios'] },
+            { id: 'straps-gym', nombre: 'Straps para Gym', precioNum: 24.99, precioLabel: '$ 99.960', img: 'img/straps-gym.jpg', stars: 5, marca: 'Otros', tipo: 'nuevo', temas: ['deportes'], secciones: ['hombre', 'mujer', 'accesorios'] },
         ],
     };
 
@@ -127,7 +137,8 @@
     }
 
     function mercaMoney(n) {
-        return '$' + (Math.round(Number(n) * 100) / 100).toFixed(2);
+        var copValue = Math.round(Number(n) * 4000);
+        return '$ ' + copValue.toLocaleString('es-CO');
     }
 
     function mercaRefreshCartUI() {
@@ -682,7 +693,7 @@
         });
     }
 
-    function init() {
+    async function init() {
         var seccion = getSeccionKey();
         if (seccion) {
             currentViewMode = 'seccion';
@@ -704,6 +715,10 @@
         trigger = document.getElementById('search-trigger');
         panel = document.getElementById('search-panel');
         input = document.getElementById('main-search');
+
+        // Sincronizar sesión y carrito
+        await mercaCheckSession();
+        await mercaFetchCart();
 
         if (currentViewMode === 'seccion') {
             var seccionList = gatherBySeccion(currentSeccionKey);

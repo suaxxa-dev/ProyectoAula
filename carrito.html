@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +11,15 @@
     <link rel="stylesheet" href="css/mainpage.css">
     <link rel="stylesheet" href="css/carrito.css">
 </head>
+
 <body class="page-carrito">
 
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-left">
-                <a href="Mainpage.html" class="brand-logo-link"><h1 class="brand-logo">MERCA <span>TO-DO</span></h1></a>
+                <a href="Mainpage.html" class="brand-logo-link">
+                    <h1 class="brand-logo">MERCA <span>TO-DO</span></h1>
+                </a>
                 <ul class="nav-links">
                     <li><a href="carrito.html" class="nav-link--active">CARRITO</a></li>
                     <li><a href="catalogo.html?seccion=hombre" data-seccion="hombre">HOMBRE</a></li>
@@ -25,15 +29,18 @@
                 </ul>
             </div>
             <div class="nav-icons">
-                <button type="button" class="icon-btn" id="search-trigger" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button type="button" class="icon-btn" id="search-trigger" aria-label="Buscar"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
                 <div class="profile-dropdown-wrap">
-                    <button type="button" class="icon-btn" id="profile-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="profile-menu"><i class="fa-solid fa-user"></i></button>
+                    <button type="button" class="icon-btn" id="profile-trigger" aria-expanded="false"
+                        aria-haspopup="true" aria-controls="profile-menu"><i class="fa-solid fa-user"></i></button>
                     <div class="profile-dropdown" id="profile-menu" role="menu" aria-label="Menú de cuenta">
                         <div id="profile-menu-body"></div>
                     </div>
                 </div>
                 <div class="cart-dropdown-wrap">
-                    <button type="button" class="icon-btn cart-btn" id="cart-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="cart-panel">
+                    <button type="button" class="icon-btn cart-btn" id="cart-trigger" aria-expanded="false"
+                        aria-haspopup="true" aria-controls="cart-panel">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-badge" id="cart-badge-count">0</span>
                     </button>
@@ -96,10 +103,6 @@
                     <span>Total</span>
                     <span id="sum-total">$0.00</span>
                 </div>
-                <div class="checkout-coupon">
-                    <input type="text" id="coupon-input" placeholder="Tengo un cupón de descuento" autocomplete="off" aria-label="Cupón de descuento">
-                    <button type="button" class="checkout-coupon-btn" id="coupon-apply">Aplicar</button>
-                </div>
                 <p class="checkout-coupon-msg" id="coupon-msg" aria-live="polite"></p>
                 <button type="button" class="btn-checkout-pay" id="btn-pay">Proceder al pago</button>
                 <div class="checkout-trust-pay" aria-hidden="true">
@@ -161,4 +164,5 @@
     <script src="js/search-ui.js"></script>
     <script src="js/carrito.js"></script>
 </body>
+
 </html>

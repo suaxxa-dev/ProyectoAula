@@ -6,7 +6,8 @@
     }
 
     function mercaMoney(n) {
-        return '$' + (Math.round(Number(n) * 100) / 100).toFixed(2);
+        var copValue = Math.round(Number(n) * 4000);
+        return '$ ' + copValue.toLocaleString('es-CO');
     }
 
     function mercaRefreshCartUI() {
@@ -164,7 +165,7 @@
     var cartTrigger;
     var cartPanel;
 
-    function init() {
+    async function init() {
         trigger = document.getElementById('search-trigger');
         panel = document.getElementById('search-panel');
         input = document.getElementById('main-search');
@@ -177,6 +178,10 @@
         cartTrigger = document.getElementById('cart-trigger');
         cartPanel = document.getElementById('cart-panel');
 
+        // Sincronizar sesión y carrito con el servidor
+        await mercaCheckSession();
+        await mercaFetchCart();
+        
         mercaRenderProfileMenu();
 
         cartPanel.addEventListener('click', async function (e) {

@@ -973,6 +973,15 @@ a.cat-card {
     min-height: 2.6em;
 }
 
+.p-info h4 a {
+    text-decoration: none;
+    color: var(--text);
+}
+
+.p-info h4 a:hover {
+    color: var(--orange);
+}
+
 .p-row {
     display: flex;
     justify-content: space-between;

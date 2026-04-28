@@ -45,7 +45,8 @@
     }
 
     function mercaMoney(n) {
-        return '$' + (Math.round(Number(n) * 100) / 100).toFixed(2);
+        var copValue = Math.round(Number(n) * 4000);
+        return '$ ' + copValue.toLocaleString('es-CO');
     }
 
     function mercaRefreshCartUI() {
@@ -577,8 +578,11 @@
         };
     }
 
-    function init() {
+    async function init() {
         buildSearchDb();
+        // Sincronizar sesión y carrito
+        await mercaCheckSession();
+        await mercaFetchCart();
         initNav();
         renderProduct();
     }
