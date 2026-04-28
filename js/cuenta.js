@@ -36,6 +36,7 @@
                 img: d.imagenes[0],
                 sku: 'SKU-' + id.replace(/-/g, '').slice(0, 12).toUpperCase(),
                 cat: d.breadcrumb[0],
+                id: id,
             });
         });
     }
@@ -240,50 +241,14 @@
             }
         };
 
-        input.oninput = function () {
-            var query = input.value.toLowerCase().trim();
-            var sections = document.querySelectorAll('.search-section');
-            var resultsCont = document.getElementById('results-container');
-            if (query.length > 0) {
-                var filtered = SEARCH_DB.filter(function (p) {
-                    return p.nombre.toLowerCase().includes(query);
-                });
-                if (filtered.length > 0) {
-                    resultsCont.innerHTML = filtered
-                        .map(function (p) {
-                            return (
-                                '<a class="sug-item" href="catalogo.html?cat=tecnologia">' +
-                                '<div class="s-img-box"><img src="' +
-                                mercaEsc(p.img) +
-                                '" alt=""></div>' +
-                                '<p class="s-name"><b>' +
-                                mercaEsc(p.nombre) +
-                                '</b></p>' +
-                                '<p class="s-price">' +
-                                mercaEsc(p.precio) +
-                                '</p></a>'
-                            );
-                        })
-                        .join('');
-                    document.getElementById('sku-display').innerHTML =
-                        '<b>' + mercaEsc(filtered[0].nombre) + '</b> — ' + mercaEsc(filtered[0].sku);
-                    document.getElementById('cats-display').innerHTML =
-                        '<li><i class="fa-solid fa-check"></i> ' + mercaEsc(filtered[0].cat) + '</li>';
-                    sections.forEach(function (s) {
-                        s.classList.add('show');
-                    });
-                } else {
-                    resultsCont.innerHTML = '<p style="padding:10px; color:#888;">Sin resultados...</p>';
-                    sections[0].classList.add('show');
-                    sections[1].classList.remove('show');
-                    sections[2].classList.remove('show');
-                }
-            } else {
-                sections.forEach(function (s) {
-                    s.classList.remove('show');
-                });
-            }
-        };
+        // ── Motor de búsqueda Python (search-ui.js) ──
+        MercaSearch.init({
+            inputId:       'main-search',
+            containerId:   'results-container',
+            skuDisplayId:  'sku-display',
+            catsDisplayId: 'cats-display',
+            sectionsClass: '.search-section',
+        });
 
         document.onclick = function (e) {
             if (!panel.contains(e.target) && e.target !== trigger) panel.classList.remove('active');
@@ -528,20 +493,226 @@
             saveProfileForm();
         });
 
-        document.getElementById('form-password').addEventListener('submit', function (e) {
+        // ── Contraseña real ──────────────────────────────────────────────────────
+    var passForm = document.getElementById('form-password');
+    if (passForm) {
+        // Añadir mensaje de respuesta al formulario
+        var passMsg = document.createElement('p');
+        passMsg.id = 'pass-msg';
+        passMsg.className = 'cuenta-save-ok';
+        passMsg.setAttribute('role', 'status');
+        passMsg.style.display = 'none';
+        passForm.appendChild(passMsg);
+
+        passForm.addEventListener('submit', async function (e) {
             e.preventDefault();
-            window.alert('Demo MERCA TO-DO: la contraseña no se cambia en este entorno. Usa los requisitos listados como guía.');
-        });
+            var actual = document.getElementById('pass-actual').value;
+            var nueva = document.getElementById('pass-nueva').value;
+            var nueva2 = document.getElementById('pass-nueva2').value;
+            passMsg.style.display = 'none';
+            passMsg.className = 'cuenta-save-ok';
+            passMsg.style.color = '';
+            passMsg.style.background = '';
+            passMsg.style.borderColor = '';
 
-        document.getElementById('btn-add-dir').addEventListener('click', function () {
-            window.alert('Demo: aquí se abriría el formulario para una nueva dirección.');
+            if (!actual || !nueva || !nueva2) {
+                passMsg.textContent = 'Completa todos los campos de contraseña.';
+                passMsg.style.display = 'block';
+                passMsg.style.color = '#e53e3e';
+                passMsg.style.background = '#fff5f5';
+                passMsg.style.borderColor = '#e53e3e';
+                return;
+            }
+            if (nueva !== nueva2) {
+                passMsg.textContent = 'Las contraseñas nuevas no coinciden.';
+                passMsg.style.display = 'block';
+                passMsg.style.color = '#e53e3e';
+                passMsg.style.background = '#fff5f5';
+                passMsg.style.borderColor = '#e53e3e';
+                return;
+            }
+            var btn = passForm.querySelector('[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Guardando…';
+            try {
+                var res = await fetch('/api/auth/password', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ currentPassword: actual, newPassword: nueva }),
+                });
+                var data = await res.json();
+                if (data.ok) {
+                    passMsg.textContent = '✓ ' + data.message;
+                    passMsg.classList.add('is-visible');
+                    passMsg.style.display = 'block';
+                    passForm.reset();
+                    window.setTimeout(function () {
+                        passMsg.classList.remove('is-visible');
+                        passMsg.style.display = 'none';
+                    }, 4000);
+                } else {
+                    passMsg.textContent = data.error || 'Error al cambiar la contraseña.';
+                    passMsg.style.display = 'block';
+                    passMsg.style.color = '#e53e3e';
+                    passMsg.style.background = '#fff5f5';
+                    passMsg.style.borderColor = '#e53e3e';
+                }
+            } catch {
+                passMsg.textContent = 'Error de red. Intenta de nuevo.';
+                passMsg.style.display = 'block';
+                passMsg.style.color = '#e53e3e';
+            }
+            btn.disabled = false;
+            btn.textContent = 'Actualizar contraseña';
         });
+    }
 
-        document.querySelectorAll('.cuenta-dir-actions button').forEach(function (b) {
-            b.addEventListener('click', function () {
-                window.alert('Demo: acción de edición o eliminación de dirección.');
-            });
+    // ── Direcciones reales ───────────────────────────────────────────────────
+    var dirModal = document.getElementById('dir-modal');
+    var dirList = document.getElementById('dir-list');
+    var dirForm = document.getElementById('form-direccion');
+    var dirErr = document.getElementById('dir-form-error');
+
+    function renderDirecciones(dirs) {
+        if (!dirList) return;
+        if (!dirs || dirs.length === 0) {
+            dirList.innerHTML = '<p style="color:#64748b;grid-column:1/-1;">Aún no tienes direcciones guardadas. ¡Añade una!</p>';
+            return;
+        }
+        dirList.innerHTML = dirs.map(function (d) {
+            var badges = d.predeterminada
+                ? '<span class="cuenta-tag cuenta-tag--green">Predeterminada</span>'
+                : '<span class="cuenta-tag cuenta-tag--gray">Envío</span>';
+            var aliasText = d.alias ? '<strong>' + mercaEsc(d.alias) + '</strong><br>' : '';
+            return (
+                '<div class="cuenta-dir-card">' +
+                '<h4>' + mercaEsc(d.nombre) + '</h4>' +
+                aliasText +
+                '<p>' + mercaEsc(d.calle) + '<br>' + mercaEsc(d.ciudad) +
+                (d.estado ? ', ' + mercaEsc(d.estado) : '') +
+                (d.codigoPostal ? ', ' + mercaEsc(d.codigoPostal) : '') + '</p>' +
+                '<div class="cuenta-dir-badges">' + badges + '</div>' +
+                '<div class="cuenta-dir-actions">' +
+                '<button type="button" class="dir-btn-edit" data-dir-id="' + d.id + '" aria-label="Editar dirección"><i class="fa-solid fa-pencil"></i></button>' +
+                '<button type="button" class="dir-btn-del" data-dir-id="' + d.id + '" aria-label="Eliminar dirección"><i class="fa-solid fa-trash"></i></button>' +
+                '</div></div>'
+            );
+        }).join('');
+    }
+
+    async function loadDirecciones() {
+        try {
+            var res = await fetch('/api/addresses');
+            var dirs = await res.json();
+            renderDirecciones(dirs);
+        } catch { renderDirecciones([]); }
+    }
+
+    function openDirModal(dir) {
+        if (!dirModal) return;
+        var title = document.getElementById('dir-modal-title');
+        title.textContent = dir ? 'Editar dirección' : 'Nueva dirección';
+        document.getElementById('dir-edit-id').value = dir ? dir.id : '';
+        document.getElementById('dir-alias').value = dir ? (dir.alias || '') : '';
+        document.getElementById('dir-nombre').value = dir ? (dir.nombre || '') : '';
+        document.getElementById('dir-calle').value = dir ? (dir.calle || '') : '';
+        document.getElementById('dir-ciudad').value = dir ? (dir.ciudad || '') : '';
+        document.getElementById('dir-estado').value = dir ? (dir.estado || '') : '';
+        document.getElementById('dir-cp').value = dir ? (dir.codigoPostal || '') : '';
+        document.getElementById('dir-predet').checked = dir ? !!dir.predeterminada : false;
+        if (dirErr) { dirErr.textContent = ''; dirErr.style.display = 'none'; }
+        dirModal.hidden = false;
+        document.getElementById('dir-nombre').focus();
+    }
+
+    function closeDirModal() {
+        if (dirModal) dirModal.hidden = true;
+        if (dirForm) dirForm.reset();
+    }
+
+    if (document.getElementById('btn-add-dir')) {
+        document.getElementById('btn-add-dir').addEventListener('click', function () { openDirModal(null); });
+    }
+    if (document.getElementById('dir-modal-close')) {
+        document.getElementById('dir-modal-close').addEventListener('click', closeDirModal);
+    }
+    if (document.getElementById('dir-modal-cancel')) {
+        document.getElementById('dir-modal-cancel').addEventListener('click', closeDirModal);
+    }
+    if (dirModal) {
+        dirModal.addEventListener('click', function (e) {
+            if (e.target === dirModal) closeDirModal();
         });
+    }
+
+    // Delegación de clicks en tarjetas de dirección
+    if (dirList) {
+        dirList.addEventListener('click', async function (e) {
+            var editBtn = e.target.closest('.dir-btn-edit');
+            var delBtn = e.target.closest('.dir-btn-del');
+
+            if (editBtn) {
+                var id = parseInt(editBtn.getAttribute('data-dir-id'), 10);
+                var resDirs = await fetch('/api/addresses');
+                var dirs = await resDirs.json();
+                var dir = dirs.find(function (d) { return d.id === id; });
+                if (dir) openDirModal(dir);
+            }
+            if (delBtn) {
+                if (!confirm('¿Eliminar esta dirección?')) return;
+                var delId = delBtn.getAttribute('data-dir-id');
+                var resD = await fetch('/api/addresses/' + delId, { method: 'DELETE' });
+                var dataD = await resD.json();
+                if (dataD.ok) renderDirecciones(dataD.addresses);
+                else alert(dataD.error || 'No se pudo eliminar la dirección.');
+            }
+        });
+    }
+
+    if (dirForm) {
+        dirForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            if (dirErr) { dirErr.textContent = ''; dirErr.style.display = 'none'; }
+            var editId = document.getElementById('dir-edit-id').value;
+            var body = {
+                alias:          document.getElementById('dir-alias').value.trim(),
+                nombre:         document.getElementById('dir-nombre').value.trim(),
+                calle:          document.getElementById('dir-calle').value.trim(),
+                ciudad:         document.getElementById('dir-ciudad').value.trim(),
+                estado:         document.getElementById('dir-estado').value.trim(),
+                codigoPostal:   document.getElementById('dir-cp').value.trim(),
+                predeterminada: document.getElementById('dir-predet').checked,
+            };
+            var submitBtn = document.getElementById('dir-modal-submit');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Guardando…';
+            try {
+                var url = editId ? '/api/addresses/' + editId : '/api/addresses';
+                var method = editId ? 'PUT' : 'POST';
+                var res = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body),
+                });
+                var data = await res.json();
+                if (data.ok) {
+                    renderDirecciones(data.addresses);
+                    closeDirModal();
+                } else {
+                    if (dirErr) {
+                        dirErr.textContent = data.error || 'Error al guardar.';
+                        dirErr.style.display = 'block';
+                    }
+                }
+            } catch {
+                if (dirErr) { dirErr.textContent = 'Error de red.'; dirErr.style.display = 'block'; }
+            }
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Guardar dirección';
+        });
+    }
+
+    loadDirecciones();
 
         document.getElementById('pedidos-list').addEventListener('click', function (e) {
             var t = e.target.closest('[data-demo]');

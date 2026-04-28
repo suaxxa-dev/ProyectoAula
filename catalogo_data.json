@@ -1,0 +1,32 @@
+{
+  "productos": [
+    { "id": "cat-tecnologia-dell-laptop",      "nombre": "Dell Laptop Inspiron 15",              "precioLabel": "$156.09", "img": "img/cat-tecnologia-dell-laptop.jpg",      "cat": "TECNOLOGÍA",  "sku": "SKU-CATTECD" },
+    { "id": "cat-tecnologia-samsung-phone",    "nombre": "Samsung Smartphone Galaxy Serie S",    "precioLabel": "$899.00", "img": "img/cat-tecnologia-samsung-phone.jpg",    "cat": "TECNOLOGÍA",  "sku": "SKU-CATTECS" },
+    { "id": "cat-tecnologia-apple-tablet",     "nombre": "Apple Tablet Air",                     "precioLabel": "$549.99", "img": "img/cat-tecnologia-apple-tablet.jpg",     "cat": "TECNOLOGÍA",  "sku": "SKU-CATTECA" },
+    { "id": "cat-tecnologia-monitor-lg",       "nombre": "Monitor LG UltraWide 29\"",            "precioLabel": "$329.50", "img": "img/cat-tecnologia-monitor-lg.jpg",       "cat": "TECNOLOGÍA",  "sku": "SKU-CATTECM" },
+    { "id": "cat-tecnologia-audifonos-bt",     "nombre": "Auriculares Bluetooth",                "precioLabel": "$79.99",  "img": "img/cat-tecnologia-audifonos-bt.jpg",     "cat": "TECNOLOGÍA",  "sku": "SKU-CATTECAU" },
+    { "id": "cat-tecnologia-teclado-mecanico", "nombre": "Teclado mecánico RGB",                 "precioLabel": "$124.00", "img": "img/cat-tecnologia-teclado-mecanico.jpg", "cat": "TECNOLOGÍA",  "sku": "SKU-CATTECT" },
+    { "id": "cat-hogar-sofa-modular",          "nombre": "Sofá modular 3 puestos",               "precioLabel": "$689.00", "img": "img/cat-hogar-sofa-modular.jpg",          "cat": "HOGAR",       "sku": "SKU-CATHOGS" },
+    { "id": "cat-hogar-lampara-pie",           "nombre": "Lámpara de pie LED",                   "precioLabel": "$89.99",  "img": "img/cat-hogar-lampara-pie.jpg",           "cat": "HOGAR",       "sku": "SKU-CATHOGL" },
+    { "id": "cat-hogar-cafetera-espresso",     "nombre": "Cafetera espresso",                    "precioLabel": "$215.00", "img": "img/cat-hogar-cafetera-espresso.jpg",     "cat": "HOGAR",       "sku": "SKU-CATHOGC" },
+    { "id": "cat-hogar-sabanas",               "nombre": "Juego de sábanas king",                "precioLabel": "$48.50",  "img": "img/cat-hogar-sabanas.jpg",               "cat": "HOGAR",       "sku": "SKU-CATHOGSA" },
+    { "id": "cat-hogar-organizador",           "nombre": "Organizador de cocina",                "precioLabel": "$34.99",  "img": "img/cat-hogar-organizador.jpg",           "cat": "HOGAR",       "sku": "SKU-CATHOGO" },
+    { "id": "cat-hogar-alfombra",              "nombre": "Alfombra sala 160×230",                "precioLabel": "$129.00", "img": "img/cat-hogar-alfombra.jpg",              "cat": "HOGAR",       "sku": "SKU-CATHOGAL" },
+    { "id": "cat-moda-camiseta-basica",        "nombre": "Camiseta básica algodón",              "precioLabel": "$24.99",  "img": "img/cat-moda-camiseta-basica.jpg",        "cat": "MODA",        "sku": "SKU-CATMODCAM" },
+    { "id": "cat-moda-tenis-urbanos",          "nombre": "Tenis urbanos unisex",                 "precioLabel": "$119.00", "img": "img/cat-moda-tenis-urbanos.jpg",          "cat": "MODA",        "sku": "SKU-CATMODTE" },
+    { "id": "cat-moda-chaqueta-denim",         "nombre": "Chaqueta denim",                       "precioLabel": "$79.50",  "img": "img/cat-moda-chaqueta-denim.jpg",         "cat": "MODA",        "sku": "SKU-CATMODCH" },
+    { "id": "cat-moda-bolso-tote",             "nombre": "Bolso tote ecocuero",                  "precioLabel": "$45.00",  "img": "img/cat-moda-bolso-tote.jpg",             "cat": "MODA",        "sku": "SKU-CATMODBO" },
+    { "id": "cat-moda-reloj-casual",           "nombre": "Reloj casual",                         "precioLabel": "$59.99",  "img": "img/cat-moda-reloj-casual.jpg",           "cat": "MODA",        "sku": "SKU-CATMODRE" },
+    { "id": "cat-moda-gorra",                  "nombre": "Gorra deportiva",                      "precioLabel": "$22.00",  "img": "img/cat-moda-gorra.jpg",                  "cat": "MODA",        "sku": "SKU-CATMODGO" },
+    { "id": "cat-herr-taladro-inalambrico",    "nombre": "Taladro inalámbrico 18V",              "precioLabel": "$149.99", "img": "img/cat-herr-taladro-inalambrico.jpg",    "cat": "HERRAMIENTAS","sku": "SKU-CATHERTA" },
+    { "id": "cat-herr-set-llaves",             "nombre": "Set llaves combinadas",                "precioLabel": "$64.50",  "img": "img/cat-herr-set-llaves.jpg",             "cat": "HERRAMIENTAS","sku": "SKU-CATHRSE" },
+    { "id": "cat-herr-sierra-caladora",        "nombre": "Sierra caladora 750W",                 "precioLabel": "$98.00",  "img": "img/cat-herr-sierra-caladora.jpg",        "cat": "HERRAMIENTAS","sku": "SKU-CATHRSI" },
+    { "id": "cat-herr-caja-herramientas",      "nombre": "Caja de herramientas",                 "precioLabel": "$42.99",  "img": "img/cat-herr-caja-herramientas.jpg",      "cat": "HERRAMIENTAS","sku": "SKU-CATHRCAJ" },
+    { "id": "cat-herr-nivel-laser",            "nombre": "Nivel láser cruz",                     "precioLabel": "$54.00",  "img": "img/cat-herr-nivel-laser.jpg",            "cat": "HERRAMIENTAS","sku": "SKU-CATHRNI" },
+    { "id": "cat-herr-multimetro",             "nombre": "Multímetro digital",                   "precioLabel": "$31.50",  "img": "img/cat-herr-multimetro.jpg",             "cat": "HERRAMIENTAS","sku": "SKU-CATHRMU" },
+    { "id": "asics-sky-elite",                 "nombre": "ASICS SKY ELITE AZUL",                 "precioLabel": "$159.99", "img": "img/asics.jpg",                           "cat": "DEPORTES",    "sku": "SKU-ASICS" },
+    { "id": "airpods-pro-2",                   "nombre": "AIR PODS PRO 2 GEN",                   "precioLabel": "$249.00", "img": "img/airpods.jpg",                         "cat": "TECNOLOGÍA",  "sku": "SKU-AIRPODS2" },
+    { "id": "camiseta-colombia",               "nombre": "CAMISETA COLOMBIA",                    "precioLabel": "$89.99",  "img": "img/camiseta-colombia.jpg",               "cat": "DEPORTES",    "sku": "SKU-COLOMBIA" },
+    { "id": "straps-gym",                      "nombre": "STRAPS PARA GYM",                      "precioLabel": "$24.99",  "img": "img/straps-gym.jpg",                      "cat": "ACCESORIOS",  "sku": "SKU-STRAPS" }
+  ]
+}

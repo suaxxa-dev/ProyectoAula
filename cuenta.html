@@ -142,30 +142,62 @@
                     <h2 id="tit-dir">Direcciones</h2>
                     <div class="cuenta-dir-inner">
                         <h3>Direcciones guardadas</h3>
-                        <div class="cuenta-dir-grid">
-                            <div class="cuenta-dir-card">
-                                <h4>Dirección predeterminada</h4>
-                                <p id="dir-default-text">Carlos Pérez<br>Calle 123, No. 45-67, Ciudad, Estado, 12345</p>
-                                <div class="cuenta-dir-badges">
-                                    <span class="cuenta-tag cuenta-tag--green">Predeterminada</span>
-                                    <span class="cuenta-tag cuenta-tag--gray">Facturación</span>
-                                </div>
-                            </div>
-                            <div class="cuenta-dir-card">
-                                <h4>Dirección adicional</h4>
-                                <p>Oficina — Carlos Pérez<br>Avenida Central 789, Ciudad, Estado, 67890</p>
-                                <div class="cuenta-dir-badges">
-                                    <span class="cuenta-tag cuenta-tag--gray">Envío</span>
-                                </div>
-                                <div class="cuenta-dir-actions">
-                                    <button type="button" aria-label="Editar dirección"><i class="fa-solid fa-pencil"></i></button>
-                                    <button type="button" aria-label="Eliminar dirección"><i class="fa-solid fa-trash"></i></button>
-                                </div>
-                            </div>
+                        <div class="cuenta-dir-grid" id="dir-list">
+                            <!-- Renderizado por JS -->
                         </div>
                         <button type="button" class="btn-cuenta-dir-add" id="btn-add-dir">Añadir nueva dirección</button>
                     </div>
                 </section>
+
+                <!-- Modal de dirección -->
+                <div class="dir-modal-overlay" id="dir-modal" role="dialog" aria-modal="true" aria-labelledby="dir-modal-title" hidden>
+                    <div class="dir-modal-box">
+                        <div class="dir-modal-header">
+                            <h3 id="dir-modal-title">Nueva dirección</h3>
+                            <button type="button" class="dir-modal-close" id="dir-modal-close" aria-label="Cerrar">&times;</button>
+                        </div>
+                        <form id="form-direccion" novalidate>
+                            <input type="hidden" id="dir-edit-id" value="">
+                            <div class="cuenta-form-grid">
+                                <div class="cuenta-field">
+                                    <label for="dir-alias">Alias (Ej: Casa, Oficina)</label>
+                                    <input type="text" id="dir-alias" placeholder="Casa">
+                                </div>
+                                <div class="cuenta-field">
+                                    <label for="dir-nombre">Nombre del receptor *</label>
+                                    <input type="text" id="dir-nombre" placeholder="Tu nombre completo" required>
+                                </div>
+                                <div class="cuenta-field" style="grid-column: 1 / -1;">
+                                    <label for="dir-calle">Dirección / Calle *</label>
+                                    <input type="text" id="dir-calle" placeholder="Calle 123, No. 45-67" required>
+                                </div>
+                                <div class="cuenta-field">
+                                    <label for="dir-ciudad">Ciudad *</label>
+                                    <input type="text" id="dir-ciudad" placeholder="Bogotá" required>
+                                </div>
+                                <div class="cuenta-field">
+                                    <label for="dir-estado">Departamento</label>
+                                    <input type="text" id="dir-estado" placeholder="Cundinamarca">
+                                </div>
+                                <div class="cuenta-field">
+                                    <label for="dir-cp">Código postal</label>
+                                    <input type="text" id="dir-cp" placeholder="110111">
+                                </div>
+                                <div class="cuenta-field" style="grid-column: 1 / -1;">
+                                    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                                        <input type="checkbox" id="dir-predet">
+                                        Establecer como dirección predeterminada
+                                    </label>
+                                </div>
+                            </div>
+                            <p class="cuenta-save-ok" id="dir-form-error" role="alert" style="color:#e53e3e;background:#fff5f5;border-color:#e53e3e;"></p>
+                            <div class="dir-modal-actions">
+                                <button type="button" class="btn-cuenta-outline" id="dir-modal-cancel">Cancelar</button>
+                                <button type="submit" class="btn-cuenta-save" style="margin-top:0;" id="dir-modal-submit">Guardar dirección</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
                 <section class="cuenta-panel" id="panel-datos" aria-labelledby="tit-datos">
                     <h2 id="tit-datos">Datos personales</h2>
@@ -309,6 +341,7 @@
 
     <script src="js/auth.js"></script>
     <script src="js/productos-data.js"></script>
+    <script src="js/search-ui.js"></script>
     <script src="js/cuenta.js"></script>
 </body>
 </html>

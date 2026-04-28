@@ -145,9 +145,13 @@
     }
 
     var SEARCH_DB = [
-        { nombre: 'Tenis Nike Air Max', precio: '$149.99', sku: 'SKU-1002345', img: 'img/nike-black.png', cat: 'Calzado Hombre' },
-        { nombre: 'Tenis Nike Revolution', precio: '$59.99', sku: 'SKU-1002346', img: 'img/nike-white.png', cat: 'Calzado Mujer' },
-        { nombre: 'iPhone 15 Pro Max', precio: '$1,199.00', sku: 'SKU-990011', img: 'img/iphone.png', cat: 'Tecnología' },
+        { id: 'cat-moda-tenis-urbanos', nombre: 'Tenis Nike Air Max', precio: '$149.99', sku: 'SKU-1002345', img: 'img/nike-black.png', cat: 'Calzado Hombre' },
+        { id: 'cat-moda-tenis-urbanos', nombre: 'Tenis Nike Revolution', precio: '$59.99', sku: 'SKU-1002346', img: 'img/nike-white.png', cat: 'Calzado Mujer' },
+        { id: 'cat-tecnologia-samsung-phone', nombre: 'iPhone 15 Pro Max', precio: '$1,199.00', sku: 'SKU-990011', img: 'img/iphone.png', cat: 'Tecnología' },
+        { id: 'asics-sky-elite', nombre: 'ASICS SKY ELITE AZUL', precio: '$159.99', sku: 'SKU-ASICS', img: 'img/asics.jpg', cat: 'Deportes' },
+        { id: 'airpods-pro-2', nombre: 'AIR PODS PRO 2 GEN', precio: '$249.00', sku: 'SKU-AIRPODS2', img: 'img/airpods.jpg', cat: 'Tecnología' },
+        { id: 'camiseta-colombia', nombre: 'CAMISETA COLOMBIA', precio: '$89.99', sku: 'SKU-COLOMBIA', img: 'img/camiseta-colombia.jpg', cat: 'Deportes' },
+        { id: 'straps-gym', nombre: 'STRAPS PARA GYM', precio: '$24.99', sku: 'SKU-STRAPS', img: 'img/straps-gym.jpg', cat: 'Accesorios' },
     ];
 
     var trigger;
@@ -270,51 +274,14 @@
             }
         };
 
-        input.oninput = function () {
-            var query = input.value.toLowerCase().trim();
-            var sections = document.querySelectorAll('.search-section');
-            var resultsCont = document.getElementById('results-container');
-
-            if (query.length > 0) {
-                var filtered = SEARCH_DB.filter(function (p) {
-                    return p.nombre.toLowerCase().includes(query);
-                });
-                if (filtered.length > 0) {
-                    resultsCont.innerHTML = filtered
-                        .map(function (p) {
-                            return (
-                                '<div class="sug-item">' +
-                                '<div class="s-img-box"><img src="' +
-                                mercaEsc(p.img) +
-                                '" alt=""></div>' +
-                                '<p class="s-name"><b>' +
-                                mercaEsc(p.nombre) +
-                                '</b></p>' +
-                                '<p class="s-price">' +
-                                mercaEsc(p.precio) +
-                                '</p></div>'
-                            );
-                        })
-                        .join('');
-                    document.getElementById('sku-display').innerHTML =
-                        '<b>' + mercaEsc(filtered[0].nombre) + '</b> — ' + mercaEsc(filtered[0].sku);
-                    document.getElementById('cats-display').innerHTML =
-                        '<li><i class="fa-solid fa-check"></i> Ver en "' + mercaEsc(filtered[0].cat) + '"</li>';
-                    sections.forEach(function (s) {
-                        s.classList.add('show');
-                    });
-                } else {
-                    resultsCont.innerHTML = '<p style="padding:10px; color:#888;">Sin resultados...</p>';
-                    sections[0].classList.add('show');
-                    sections[1].classList.remove('show');
-                    sections[2].classList.remove('show');
-                }
-            } else {
-                sections.forEach(function (s) {
-                    s.classList.remove('show');
-                });
-            }
-        };
+        // ── Motor de búsqueda Python (search-ui.js) ──
+        MercaSearch.init({
+            inputId:       'main-search',
+            containerId:   'results-container',
+            skuDisplayId:  'sku-display',
+            catsDisplayId: 'cats-display',
+            sectionsClass: '.search-section',
+        });
 
         document.onclick = function (e) {
             if (!panel.contains(e.target) && e.target !== trigger) panel.classList.remove('active');

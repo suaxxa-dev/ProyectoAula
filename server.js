@@ -1,10 +1,12 @@
 /**
  * server.js — Servidor Express para MERCA TO-DO
  * Sirve archivos estáticos + API REST con SQLite
+ * Integración con Python (search.py) para búsqueda avanzada
  */
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const { spawn } = require('child_process');
 const db = require('./db');
 
 const app = express();
@@ -163,6 +165,53 @@ app.get('/api/orders', requireAuth, (req, res) => {
 });
 
 /* ══════════════════════════════════════
+   API — BÚSQUEDA (Python search.py)
+   ══════════════════════════════════════ */
+
+/**
+ * GET /api/search?q=<texto>&sku=<codigo>&limit=<n>
+ * Llama al motor Python search.py y devuelve los resultados ordenados.
+ */
+app.get('/api/search', (req, res) => {
+  const q     = (req.query.q   || '').trim();
+  const sku   = (req.query.sku || '').trim();
+  const limit = Math.min(parseInt(req.query.limit, 10) || 8, 20);
+
+  if (!q && !sku) {
+    return res.json({ ok: true, results: [], sku_exact: null });
+  }
+
+  const params = JSON.stringify({ q, sku, limit });
+  const py = spawn('python', [
+    path.join(__dirname, 'search.py'),
+    params,
+  ]);
+
+  let stdout = '';
+  let stderr = '';
+
+  py.stdout.on('data', chunk => { stdout += chunk; });
+  py.stderr.on('data', chunk => { stderr += chunk; });
+
+  // Timeout: si Python tarda más de 5 s, devolver error
+  const timer = setTimeout(() => {
+    py.kill();
+    res.status(503).json({ ok: false, error: 'Timeout en motor de búsqueda', results: [], sku_exact: null });
+  }, 5000);
+
+  py.on('close', code => {
+    clearTimeout(timer);
+    try {
+      const data = JSON.parse(stdout);
+      res.json(data);
+    } catch {
+      console.error('[search.py stderr]', stderr);
+      res.status(500).json({ ok: false, error: 'Error en motor de búsqueda', results: [], sku_exact: null });
+    }
+  });
+});
+
+/* ══════════════════════════════════════
    API — PERFIL
    ══════════════════════════════════════ */
 
@@ -177,12 +226,71 @@ app.get('/api/profile', requireAuth, (req, res) => {
 app.put('/api/profile', requireAuth, (req, res) => {
   const { nombre, telefono, nacimiento } = req.body;
   db.updateProfile(req.session.userId, { nombre, telefono, nacimiento });
-
-  // Actualizar datos en sesión si cambió el nombre
   if (nombre) req.session.userName = nombre.trim();
-
   const profile = db.getUserProfile(req.session.userId);
   res.json({ ok: true, profile });
+});
+
+/* ══════════════════════════════════════
+   API — CONTRASEÑA
+   ══════════════════════════════════════ */
+
+// PUT /api/auth/password
+app.put('/api/auth/password', requireAuth, (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+  if (!currentPassword || !newPassword) {
+    return res.status(400).json({ ok: false, error: 'Completa todos los campos.' });
+  }
+  // Validaciones de complejidad
+  if (newPassword.length < 8) {
+    return res.status(400).json({ ok: false, error: 'La nueva contraseña debe tener al menos 8 caracteres.' });
+  }
+  if (!/[A-Z]/.test(newPassword) || !/[a-z]/.test(newPassword)) {
+    return res.status(400).json({ ok: false, error: 'La nueva contraseña debe incluir mayúscula y minúscula.' });
+  }
+  if (!/[0-9]/.test(newPassword) || !/[^A-Za-z0-9]/.test(newPassword)) {
+    return res.status(400).json({ ok: false, error: 'La nueva contraseña debe incluir un número y un símbolo especial.' });
+  }
+  const result = db.changePassword(req.session.userId, currentPassword, newPassword);
+  if (!result.ok) return res.status(400).json(result);
+  res.json({ ok: true, message: '¡Contraseña actualizada exitosamente!' });
+});
+
+/* ══════════════════════════════════════
+   API — DIRECCIONES
+   ══════════════════════════════════════ */
+
+// GET /api/addresses
+app.get('/api/addresses', requireAuth, (req, res) => {
+  res.json(db.getAddresses(req.session.userId));
+});
+
+// POST /api/addresses
+app.post('/api/addresses', requireAuth, (req, res) => {
+  const { alias, nombre, calle, ciudad, estado, codigoPostal, predeterminada } = req.body;
+  if (!nombre || !calle || !ciudad) {
+    return res.status(400).json({ ok: false, error: 'Nombre, calle y ciudad son obligatorios.' });
+  }
+  const result = db.addAddress(req.session.userId, { alias, nombre, calle, ciudad, estado, codigoPostal, predeterminada });
+  res.status(201).json({ ...result, addresses: db.getAddresses(req.session.userId) });
+});
+
+// PUT /api/addresses/:id
+app.put('/api/addresses/:id', requireAuth, (req, res) => {
+  const { alias, nombre, calle, ciudad, estado, codigoPostal, predeterminada } = req.body;
+  if (!nombre || !calle || !ciudad) {
+    return res.status(400).json({ ok: false, error: 'Nombre, calle y ciudad son obligatorios.' });
+  }
+  const result = db.updateAddress(req.session.userId, parseInt(req.params.id, 10), { alias, nombre, calle, ciudad, estado, codigoPostal, predeterminada });
+  if (!result.ok) return res.status(404).json(result);
+  res.json({ ...result, addresses: db.getAddresses(req.session.userId) });
+});
+
+// DELETE /api/addresses/:id
+app.delete('/api/addresses/:id', requireAuth, (req, res) => {
+  const result = db.deleteAddress(req.session.userId, parseInt(req.params.id, 10));
+  if (!result.ok) return res.status(404).json(result);
+  res.json({ ...result, addresses: db.getAddresses(req.session.userId) });
 });
 
 /* ══════════════════════════════════════

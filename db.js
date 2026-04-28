@@ -87,6 +87,21 @@ async function initDb() {
     )
   `);
 
+  db.run(`
+    CREATE TABLE IF NOT EXISTS direcciones (
+      id           INTEGER PRIMARY KEY AUTOINCREMENT,
+      usuario_id   INTEGER NOT NULL,
+      alias        TEXT    NOT NULL DEFAULT '',
+      nombre       TEXT    NOT NULL DEFAULT '',
+      calle        TEXT    NOT NULL DEFAULT '',
+      ciudad       TEXT    NOT NULL DEFAULT '',
+      estado       TEXT    NOT NULL DEFAULT '',
+      codigo_postal TEXT   NOT NULL DEFAULT '',
+      predeterminada INTEGER NOT NULL DEFAULT 0,
+      FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+    )
+  `);
+
   // Seed — usuario demo
   const existing = db.exec("SELECT id FROM usuarios WHERE email = 'demo@mercatodo.com'");
   if (existing.length === 0 || existing[0].values.length === 0) {
@@ -296,6 +311,64 @@ function getOrders(userId) {
 }
 
 /* ══════════════════════════════════════
+   FUNCIONES — Contraseña
+   ══════════════════════════════════════ */
+function changePassword(userId, currentPassword, newPassword) {
+  const user = queryOne('SELECT * FROM usuarios WHERE id = ?', [userId]);
+  if (!user) return { ok: false, error: 'Usuario no encontrado.' };
+  if (!bcrypt.compareSync(currentPassword, user.password)) {
+    return { ok: false, error: 'La contraseña actual es incorrecta.' };
+  }
+  const hash = bcrypt.hashSync(newPassword, 10);
+  runSql('UPDATE usuarios SET password = ? WHERE id = ?', [hash, userId]);
+  return { ok: true };
+}
+
+/* ══════════════════════════════════════
+   FUNCIONES — Direcciones
+   ══════════════════════════════════════ */
+function getAddresses(userId) {
+  return queryAll(
+    'SELECT id, alias, nombre, calle, ciudad, estado, codigo_postal AS codigoPostal, predeterminada FROM direcciones WHERE usuario_id = ? ORDER BY predeterminada DESC, id ASC',
+    [userId]
+  );
+}
+
+function addAddress(userId, data) {
+  const { alias, nombre, calle, ciudad, estado, codigoPostal, predeterminada } = data;
+  // Si la nueva es predeterminada, desmarcar las demás
+  if (predeterminada) {
+    runSql('UPDATE direcciones SET predeterminada = 0 WHERE usuario_id = ?', [userId]);
+  }
+  runSql(
+    'INSERT INTO direcciones (usuario_id, alias, nombre, calle, ciudad, estado, codigo_postal, predeterminada) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+    [userId, alias || '', nombre || '', calle || '', ciudad || '', estado || '', codigoPostal || '', predeterminada ? 1 : 0]
+  );
+  return { ok: true, id: lastId() };
+}
+
+function updateAddress(userId, addressId, data) {
+  const existing = queryOne('SELECT id FROM direcciones WHERE id = ? AND usuario_id = ?', [addressId, userId]);
+  if (!existing) return { ok: false, error: 'Dirección no encontrada.' };
+  const { alias, nombre, calle, ciudad, estado, codigoPostal, predeterminada } = data;
+  if (predeterminada) {
+    runSql('UPDATE direcciones SET predeterminada = 0 WHERE usuario_id = ?', [userId]);
+  }
+  runSql(
+    'UPDATE direcciones SET alias = ?, nombre = ?, calle = ?, ciudad = ?, estado = ?, codigo_postal = ?, predeterminada = ? WHERE id = ? AND usuario_id = ?',
+    [alias || '', nombre || '', calle || '', ciudad || '', estado || '', codigoPostal || '', predeterminada ? 1 : 0, addressId, userId]
+  );
+  return { ok: true };
+}
+
+function deleteAddress(userId, addressId) {
+  const existing = queryOne('SELECT id FROM direcciones WHERE id = ? AND usuario_id = ?', [addressId, userId]);
+  if (!existing) return { ok: false, error: 'Dirección no encontrada.' };
+  runSql('DELETE FROM direcciones WHERE id = ? AND usuario_id = ?', [addressId, userId]);
+  return { ok: true };
+}
+
+/* ══════════════════════════════════════
    EXPORTS
    ══════════════════════════════════════ */
 module.exports = {
@@ -303,6 +376,7 @@ module.exports = {
   createUser,
   findUserByEmail,
   authenticateUser,
+  changePassword,
   updateProfile,
   getUserProfile,
   getCart,
@@ -312,4 +386,8 @@ module.exports = {
   clearCart,
   createOrder,
   getOrders,
+  getAddresses,
+  addAddress,
+  updateAddress,
+  deleteAddress,
 };

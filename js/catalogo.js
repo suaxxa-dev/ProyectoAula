@@ -113,6 +113,7 @@
                 sku: 'SKU-' + p.id.replace(/-/g, '').slice(0, 10).toUpperCase(),
                 img: p.img,
                 cat: CAT_LABEL[k],
+                id: p.id,
             });
         });
     });
@@ -838,50 +839,14 @@
             }
         };
 
-        input.oninput = function () {
-            var query = input.value.toLowerCase().trim();
-            var sections = document.querySelectorAll('.search-section');
-            var resultsCont = document.getElementById('results-container');
-            if (query.length > 0) {
-                var filtered = SEARCH_DB.filter(function (p) {
-                    return p.nombre.toLowerCase().includes(query);
-                });
-                if (filtered.length > 0) {
-                    resultsCont.innerHTML = filtered
-                        .map(function (p) {
-                            return (
-                                '<div class="sug-item">' +
-                                '<div class="s-img-box"><img src="' +
-                                p.img +
-                                '" alt=""></div>' +
-                                '<p class="s-name"><b>' +
-                                p.nombre +
-                                '</b></p>' +
-                                '<p class="s-price">' +
-                                p.precio +
-                                '</p></div>'
-                            );
-                        })
-                        .join('');
-                    document.getElementById('sku-display').innerHTML =
-                        '<b>' + filtered[0].nombre + '</b> - ' + filtered[0].sku;
-                    document.getElementById('cats-display').innerHTML =
-                        '<li><i class="fa-solid fa-check"></i> Ver en "' + filtered[0].cat + '"</li>';
-                    sections.forEach(function (s) {
-                        s.classList.add('show');
-                    });
-                } else {
-                    resultsCont.innerHTML = '<p style="padding:10px; color:#888;">Sin resultados...</p>';
-                    sections[0].classList.add('show');
-                    sections[1].classList.remove('show');
-                    sections[2].classList.remove('show');
-                }
-            } else {
-                sections.forEach(function (s) {
-                    s.classList.remove('show');
-                });
-            }
-        };
+        // ── Motor de búsqueda Python (search-ui.js) ──
+        MercaSearch.init({
+            inputId:       'main-search',
+            containerId:   'results-container',
+            skuDisplayId:  'sku-display',
+            catsDisplayId: 'cats-display',
+            sectionsClass: '.search-section',
+        });
 
         document.onclick = function (e) {
             if (!panel.contains(e.target) && e.target !== trigger) panel.classList.remove('active');
