@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | MERCA TO-DO</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="img/ICON.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/mainpage.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+    <aside class="admin-sidebar">
+        <div class="admin-logo">
+            <h1 class="brand-logo">MERCA <span>ADMIN</span></h1>
+        </div>
+        <nav class="admin-nav">
+            <a href="Mainpage.html" class="admin-nav-link"><i class="fa-solid fa-house"></i> Volver a la web</a>
+            <a href="#" class="admin-nav-link active" data-section="products"><i class="fa-solid fa-box"></i> Productos</a>
+            <a href="#" class="admin-nav-link" data-section="orders"><i class="fa-solid fa-receipt"></i> Pedidos</a>
+            <a href="#" class="admin-nav-link" data-section="users"><i class="fa-solid fa-users"></i> Usuarios</a>
+            <a href="#" class="admin-nav-link admin-pro-only" data-section="logs" style="display:none;"><i class="fa-solid fa-list-check"></i> Auditoría</a>
+            <a href="#" class="admin-nav-link admin-pro-only" data-section="admins" style="display:none;"><i class="fa-solid fa-user-shield"></i> Admins</a>
+            <a href="#" class="admin-nav-link admin-pro-only" data-section="config" style="display:none;"><i class="fa-solid fa-gear"></i> Configuración</a>
+            <a href="#" class="admin-nav-link admin-pro-only" data-section="reports" style="display:none;"><i class="fa-solid fa-chart-line"></i> Reportes</a>
+        </nav>
+        <div class="admin-logout-wrap">
+            <button id="admin-logout" class="admin-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+        <header class="admin-header">
+            <div class="header-left">
+                <h2>Gestión de Productos</h2>
+                <p>Añade, edita o elimina productos del catálogo en tiempo real.</p>
+            </div>
+            <div class="header-right">
+                <button id="btn-new-product" class="btn-primary"><i class="fa-solid fa-plus"></i> Nuevo Producto</button>
+            </div>
+        </header>
+
+        <section id="products-section" class="admin-content section-tab active">
+            <div class="products-toolbar">
+                <div class="search-input-wrap">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="admin-search" placeholder="Filtrar por nombre, categoría o SKU...">
+                </div>
+            </div>
+
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>SKU</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-table-body">
+                        <!-- Cargado vía JS -->
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 40px;">Cargando productos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="orders-section" class="admin-content section-tab">
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Usuario</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-table-body">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 40px;">Cargando pedidos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="users-section" class="admin-content section-tab">
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Fecha Creación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table-body">
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 40px;">Cargando usuarios...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section id="logs-section" class="admin-content section-tab">
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Admin</th>
+                            <th>Acción</th>
+                            <th>Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logs-table-body">
+                        <tr><td colspan="4" style="text-align:center; padding:40px;">Cargando auditoría...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="admins-section" class="admin-content section-tab">
+            <div class="products-toolbar">
+                <button id="btn-new-admin" class="btn-primary"><i class="fa-solid fa-user-plus"></i> Crear Admin Junior</button>
+            </div>
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admins-table-body">
+                        <tr><td colspan="4" style="text-align:center; padding:40px;">Cargando admins...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="config-section" class="admin-content section-tab">
+            <div style="background:#fff; padding:24px; border-radius:12px; max-width:500px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+                <h3>Configuración del Sistema</h3>
+                <form id="config-form" style="margin-top:20px;">
+                    <div class="form-group" style="margin-bottom:15px;">
+                        <label for="c-iva">Impuesto (IVA %)</label>
+                        <input type="number" step="0.1" id="c-iva" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;">
+                    </div>
+                    <button type="submit" class="btn-primary">Guardar Configuración</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="reports-section" class="admin-content section-tab">
+            <div style="background:#fff; padding:24px; border-radius:12px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+                <h3>Resumen Financiero</h3>
+                <p>Esta es una vista preliminar de reportes avanzados.</p>
+                <div id="reports-content" style="margin-top:20px; font-size:18px;">
+                    Cargando reportes...
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para Nuevo/Editar Producto -->
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal-content admin-modal">
+            <header class="modal-header">
+                <h3 id="modal-title">Nuevo Producto</h3>
+                <button class="close-modal">&times;</button>
+            </header>
+            <form id="product-form" class="admin-form">
+                <input type="hidden" id="edit-id">
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="p-nombre">Nombre del Producto</label>
+                        <input type="text" id="p-nombre" name="nombre" required placeholder="Ej: Samsung Galaxy S24">
+                    </div>
+                    <div class="form-group">
+                        <label for="p-id">ID Único (slug)</label>
+                        <input type="text" id="p-id" name="id" required placeholder="samsung-galaxy-s24">
+                    </div>
+                    <div class="form-group">
+                        <label for="p-sku">SKU</label>
+                        <input type="text" id="p-sku" name="sku" required placeholder="SKU-SAM24">
+                    </div>
+                    <div class="form-group">
+                        <label for="p-cat">Categoría</label>
+                        <select id="p-cat" name="cat" required>
+                            <option value="TECNOLOGÍA">Tecnología</option>
+                            <option value="MODA">Moda</option>
+                            <option value="HOGAR">Hogar</option>
+                            <option value="HERRAMIENTAS">Herramientas</option>
+                            <option value="DEPORTES">Deportes</option>
+                            <option value="ACCESORIOS">Accesorios</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="p-precio-num">Precio Numérico</label>
+                        <input type="number" id="p-precio-num" name="precio_num" required step="0.01" placeholder="3596000">
+                    </div>
+                    <div class="form-group">
+                        <label for="p-precio-label">Etiqueta de Precio</label>
+                        <input type="text" id="p-precio-label" name="precio_label" required placeholder="$ 3.596.000">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="p-img">URL de Imagen</label>
+                        <input type="text" id="p-img" name="img" required placeholder="img/productos/mi-celular.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label for="p-desc-pct">Descuento (%)</label>
+                        <input type="number" id="p-desc-pct" name="desc_pct" min="0" max="100" placeholder="Ej: 15 (0 si no aplica)">
+                    </div>
+                    <div class="form-group">
+                        <label for="p-tipo">Estado/Tipo</label>
+                        <select id="p-tipo" name="tipo">
+                            <option value="nuevo">Nuevo</option>
+                            <option value="usado">Usado</option>
+                            <option value="reacondicionado">Reacondicionado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="p-promo">Etiqueta Promo (opcional)</label>
+                        <input type="text" id="p-promo" name="promo_badge" placeholder="-20% hoy">
+                    </div>
+                    <div class="form-group">
+                        <label for="p-stock">Stock Disponible</label>
+                        <input type="number" id="p-stock" name="stock" min="0" required placeholder="Cantidad en bodega">
+                    </div>
+                    <div class="form-group">
+                        <label for="p-marca">Marca (opcional)</label>
+                        <select id="p-marca" name="marca">
+                            <option value="">Seleccione una categoría primero...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Temas/Subcategorías</label>
+                        <div id="p-temas-container" style="display:flex; flex-wrap:wrap; gap:10px; background:#f9f9f9; padding:10px; border:1px solid #ddd; border-radius:6px; max-height: 100px; overflow-y: auto;">
+                            <span style="color:#666; font-size:14px;">Seleccione una categoría primero...</span>
+                        </div>
+                        <input type="hidden" id="p-temas" name="temas">
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <button type="button" class="btn-secondary close-modal">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar Producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Nuevo Admin Junior -->
+    <div id="admin-modal" class="modal-overlay">
+        <div class="modal-content admin-modal">
+            <header class="modal-header">
+                <h3>Nuevo Admin Junior</h3>
+                <button class="close-modal">&times;</button>
+            </header>
+            <form id="admin-form" class="admin-form">
+                <div class="form-group" style="margin-bottom:15px;">
+                    <label for="a-nombre">Nombre</label>
+                    <input type="text" id="a-nombre" required placeholder="Ej: Carlos Gómez">
+                </div>
+                <div class="form-group" style="margin-bottom:15px;">
+                    <label for="a-email">Correo Electrónico</label>
+                    <input type="email" id="a-email" required placeholder="carlos@mercatodo.com">
+                </div>
+                <div class="form-group" style="margin-bottom:20px;">
+                    <label for="a-pass">Contraseña Provisional</label>
+                    <input type="password" id="a-pass" required placeholder=".......">
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%;">Crear Administrador</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,678 @@
+/* =========================================
+   PÁGINA DE PAGO — Estilos
+========================================= */
+
+.page-pago {
+    background: #ebebeb;
+    min-height: 100vh;
+}
+
+/* ── Barra de progreso ── */
+.pago-progress {
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 18px 5%;
+}
+
+.pago-progress-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.pago-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #999;
+    min-width: 70px;
+}
+
+.pago-step.is-done {
+    color: #15803d;
+}
+
+.pago-step.is-current {
+    color: var(--orange);
+}
+
+.pago-step-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 800;
+    background: #e5e5e5;
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+.pago-step.is-done .pago-step-circle {
+    background: #15803d;
+    color: #fff;
+}
+
+.pago-step.is-current .pago-step-circle {
+    background: var(--orange);
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(227, 118, 30, 0.35);
+}
+
+.pago-step-line {
+    flex: 1;
+    height: 3px;
+    background: #e5e5e5;
+    min-width: 40px;
+    max-width: 100px;
+    border-radius: 3px;
+    margin: 0 8px;
+    margin-bottom: 22px;
+}
+
+.pago-step-line.is-done {
+    background: #15803d;
+}
+
+/* ── Layout principal ── */
+.pago-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 5% 56px;
+}
+
+.pago-grid {
+    display: grid;
+    grid-template-columns: 1fr min(380px, 38%);
+    gap: 28px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .pago-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Secciones de formulario ── */
+.pago-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 26px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.pago-section-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 20px;
+}
+
+/* ── Grupo de métodos de pago ── */
+.pago-group-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 20px 0 10px;
+}
+
+.pago-group-label:first-of-type {
+    margin-top: 0;
+}
+
+.pago-methods-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pago-method-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.pago-method-card:last-child {
+    border-bottom: none;
+}
+
+.pago-method-card:hover {
+    background: #fafafa;
+}
+
+.pago-method-card input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--orange);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.pago-method-card input[type="radio"]:checked ~ .pago-method-name {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.pago-method-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.pago-method-icon--pse {
+    background: #003b71;
+    color: #fff;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+}
+
+.pago-method-icon--efecty {
+    background: #f5c518;
+    color: #333;
+    font-size: 1rem;
+}
+
+.pago-method-icon--card {
+    background: #e8edf2;
+    color: #4a6785;
+    font-size: 1.1rem;
+}
+
+.pago-method-icon--banco {
+    background: #fde68a;
+    color: #92400e;
+    font-size: 1rem;
+}
+
+.pago-method-icon--nequi {
+    background: #320046;
+    color: #e652ff;
+    font-size: 1.1rem;
+}
+
+.pago-method-name {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.pago-method-arrow {
+    color: #bbb;
+    font-size: 0.75rem;
+    transition: color 0.15s;
+}
+
+.pago-method-card:hover .pago-method-arrow {
+    color: var(--orange);
+}
+
+.pago-method-badge {
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+}
+
+/* ── Panel de bancos PSE ── */
+.pago-bank-panel {
+    margin-top: 18px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 18px;
+    background: #fafafa;
+    animation: pagoSlideDown 0.3s ease;
+}
+
+@keyframes pagoSlideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.pago-bank-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 12px;
+}
+
+.pago-bank-search {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    background: #fff;
+}
+
+.pago-bank-search:focus {
+    outline: 2px solid rgba(227, 118, 30, 0.35);
+    border-color: var(--orange);
+}
+
+.pago-bank-list {
+    max-height: 260px;
+    overflow-y: auto;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.pago-bank-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #f5f5f5;
+    transition: background 0.12s;
+    font-size: 0.88rem;
+    color: #333;
+}
+
+.pago-bank-item:last-child {
+    border-bottom: none;
+}
+
+.pago-bank-item:hover {
+    background: #fff7ed;
+}
+
+.pago-bank-item.is-selected {
+    background: #fff7ed;
+    font-weight: 700;
+    color: var(--orange);
+}
+
+.pago-bank-item input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--orange);
+    flex-shrink: 0;
+}
+
+.pago-bank-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e8edf2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: #4a6785;
+    flex-shrink: 0;
+}
+
+/* ── Panel de datos de tarjeta ── */
+.pago-card-panel {
+    margin-top: 18px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 18px;
+    background: #fafafa;
+    animation: pagoSlideDown 0.3s ease;
+}
+
+.pago-card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.pago-card-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.pago-card-input-wrap {
+    position: relative;
+}
+
+.pago-card-input-wrap input {
+    padding-right: 80px;
+}
+
+.pago-card-brands {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 6px;
+    font-size: 1.3rem;
+    color: #999;
+}
+
+/* ── Formularios comunes ── */
+.pago-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.pago-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.pago-field--full {
+    grid-column: 1 / -1;
+}
+
+.pago-field label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.pago-field input,
+.pago-field select {
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    color: #1a1a1a;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pago-field input:focus,
+.pago-field select:focus {
+    outline: none;
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(227, 118, 30, 0.15);
+}
+
+.pago-field input.is-error,
+.pago-field select.is-error {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+.pago-doc-wrap {
+    display: flex;
+    gap: 8px;
+}
+
+.pago-doc-wrap select {
+    width: 90px;
+    flex-shrink: 0;
+    padding: 12px 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    background: #fff;
+}
+
+.pago-doc-wrap select:focus {
+    outline: none;
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(227, 118, 30, 0.15);
+}
+
+.pago-doc-wrap input {
+    flex: 1;
+    min-width: 0;
+}
+
+.pago-numero-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pago-numero-wrap input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    background: #fff;
+}
+
+.pago-numero-wrap input:focus {
+    outline: none;
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(227, 118, 30, 0.15);
+}
+
+.pago-sin-num {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.82rem;
+    color: #666;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.pago-sin-num input[type="checkbox"] {
+    accent-color: var(--orange);
+}
+
+@media (max-width: 600px) {
+    .pago-form-grid {
+        grid-template-columns: 1fr;
+    }
+    .pago-card-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Resumen de compra (columna derecha) ── */
+.pago-summary {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 22px 26px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 100px;
+}
+
+.pago-summary h2 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 20px;
+}
+
+.pago-sum-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.pago-sum-val {
+    font-weight: 600;
+}
+
+.pago-sum-val--green {
+    color: #15803d !important;
+    font-weight: 800 !important;
+}
+
+.pago-sum-coupon {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 14px;
+}
+
+.pago-sum-coupon a {
+    color: #2563eb;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.pago-sum-coupon a:hover {
+    text-decoration: underline;
+}
+
+.pago-coupon-field {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    animation: pagoSlideDown 0.25s ease;
+}
+
+.pago-coupon-field input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.pago-coupon-field input:focus {
+    outline: 2px solid rgba(227, 118, 30, 0.3);
+    border-color: var(--orange);
+}
+
+.pago-coupon-field button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: var(--orange);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.pago-coupon-field button:hover {
+    filter: brightness(1.06);
+}
+
+.pago-coupon-msg {
+    font-size: 0.78rem;
+    margin: 6px 0 0;
+    min-height: 1em;
+}
+
+.pago-coupon-msg--ok {
+    color: #15803d;
+    font-weight: 600;
+}
+
+.pago-coupon-msg--err {
+    color: #dc2626;
+}
+
+.pago-sum-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 14px;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.pago-sum-total-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.pago-sum-total-old {
+    font-size: 0.82rem;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 500;
+}
+
+.pago-sum-total-price {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.pago-sum-savings {
+    font-size: 0.78rem;
+    color: #15803d;
+    font-weight: 600;
+}
+
+.pago-btn-confirm {
+    display: block;
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 12px;
+    background: #3483fa;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: filter 0.15s, transform 0.1s;
+    margin-bottom: 16px;
+}
+
+.pago-btn-confirm:hover:not(:disabled) {
+    filter: brightness(1.08);
+}
+
+.pago-btn-confirm:active:not(:disabled) {
+    transform: scale(0.99);
+}
+
+.pago-btn-confirm:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.pago-secure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #15803d;
+    font-weight: 600;
+}
+
+.pago-secure i {
+    font-size: 1.1rem;
+}

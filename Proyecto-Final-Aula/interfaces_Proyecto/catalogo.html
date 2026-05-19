@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERCA TO-DO | Catálogo</title>
+    <meta name="author" content="Juan Jose Suaza - suaxxa-dev">
+    <link rel="icon" href="img/ICON.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/mainpage.css">
+    <link rel="stylesheet" href="css/catalogo.css">
+</head>
+<body class="page-catalogo">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="Mainpage.html" class="brand-logo-link"><h1 class="brand-logo">MERCA <span>TO-DO</span></h1></a>
+                <ul class="nav-links">
+                    <li><a href="carrito.html">CARRITO</a></li>
+                    <li><a href="catalogo.html?seccion=hombre" data-seccion="hombre">HOMBRE</a></li>
+                    <li><a href="catalogo.html?seccion=mujer" data-seccion="mujer">MUJER</a></li>
+                    <li><a href="catalogo.html?seccion=accesorios" data-seccion="accesorios">ACCESORIOS</a></li>
+                    <li><a href="catalogo.html?seccion=deportes" data-seccion="deportes">DEPORTES</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <button type="button" class="icon-btn" id="search-trigger" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div class="profile-dropdown-wrap">
+                    <button type="button" class="icon-btn" id="profile-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="profile-menu"><i class="fa-solid fa-user"></i></button>
+                    <div class="profile-dropdown" id="profile-menu" role="menu" aria-label="Menú de cuenta">
+                        <div id="profile-menu-body"></div>
+                    </div>
+                </div>
+                <div class="cart-dropdown-wrap">
+                    <button type="button" class="icon-btn cart-btn" id="cart-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="cart-panel">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-badge" id="cart-badge-count">0</span>
+                    </button>
+                    <div class="cart-dropdown" id="cart-panel" role="dialog" aria-label="Carrito de compras">
+                        <div class="cart-dropdown-header">Tu carrito</div>
+                        <div id="cart-panel-body"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-overlay" id="search-panel">
+            <div class="search-content">
+                <div class="search-bar-input">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="¿Qué buscas hoy?" id="main-search" autocomplete="off">
+                </div>
+                <div class="search-section" id="section-suggestions">
+                    <h3>SUGERENCIAS DE PRODUCTOS</h3>
+                    <div class="suggestions-horizontal" id="results-container"></div>
+                </div>
+                <div class="search-section" id="section-sku">
+                    <h3>BÚSQUEDA POR CÓDIGO (SKU)</h3>
+                    <p class="sku-result" id="sku-display"></p>
+                </div>
+                <div class="search-section" id="section-cats">
+                    <h3>CATEGORÍAS RELACIONADAS</h3>
+                    <ul class="rel-cats" id="cats-display"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="catalog-shell">
+        <aside class="filters-sidebar" aria-label="Filtros">
+            <div class="filter-section">
+                <h3>CATEGORÍAS</h3>
+                <div class="filter-row filter-cat-row"><a href="catalogo.html?cat=tecnologia" class="filter-cat-link" data-cat="tecnologia">Tecnología</a></div>
+                <div class="filter-row filter-cat-row"><a href="catalogo.html?cat=hogar" class="filter-cat-link" data-cat="hogar">Hogar y muebles</a></div>
+                <div class="filter-row filter-cat-row"><a href="catalogo.html?cat=moda" class="filter-cat-link" data-cat="moda">Moda y calzado</a></div>
+                <div class="filter-row filter-cat-row"><a href="catalogo.html?cat=herramientas" class="filter-cat-link" data-cat="herramientas">Herramientas</a></div>
+                <p class="filter-hint">Temas (desmarca para acotar):</p>
+                <div id="filter-subcats-container" class="filter-dynamic-block"></div>
+            </div>
+            <div class="filter-section">
+                <h3>RANGO DE PRECIO</h3>
+                <div class="price-dual-wrap">
+                    <label class="price-slider-label">Mínimo</label>
+                    <input type="range" id="price-range-min" aria-valuemin="" aria-valuemax="" aria-valuenow="">
+                    <label class="price-slider-label">Máximo</label>
+                    <input type="range" id="price-range-max" aria-valuemin="" aria-valuemax="" aria-valuenow="">
+                </div>
+                <p class="price-range-label" id="price-range-label">$0 – $0</p>
+            </div>
+            <div class="filter-section">
+                <h3>MARCAS</h3>
+                <div id="filter-marcas-container" class="filter-dynamic-block"></div>
+            </div>
+            <div class="filter-section">
+                <h3>TIPO</h3>
+                <label class="filter-row filter-tipo-row"><input type="checkbox" class="filter-tipo" data-tipo="nuevo" checked> <span>Nuevo</span></label>
+                <label class="filter-row filter-tipo-row"><input type="checkbox" class="filter-tipo" data-tipo="usado" checked> <span>Usado</span></label>
+                <label class="filter-row filter-tipo-row"><input type="checkbox" class="filter-tipo" data-tipo="reacondicionado" checked> <span>Reacondicionado</span></label>
+                <p class="filter-hint">Desmarca un tipo para excluirlo del listado.</p>
+            </div>
+        </aside>
+
+        <main class="catalog-main">
+            <div class="catalog-toolbar">
+                <h1 id="catalog-page-title">CÁTALOGO (TECNOLOGÍA)</h1>
+                <div class="catalog-sort">
+                    <label for="sort-relevance">ORDENAR POR</label>
+                    <select id="sort-relevance">
+                        <option value="default">Relevancia</option>
+                        <option value="discount">Mayor descuento</option>
+                    </select>
+                    <select id="sort-price">
+                        <option value="none">Precio</option>
+                        <option value="asc">Menor a mayor</option>
+                        <option value="desc">Mayor a menor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="catalog-grid" id="catalog-grid"></div>
+        </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col info-col">
+                <h3 class="brand-logo">MERCA <span>TO-DO</span></h3>
+                <p>Somos la plataforma líder en comercio digital, conectando tus deseos con la puerta de tu casa.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>COMPRAS</h4>
+                <ul>
+                    <li><a href="catalogo.html?seccion=hombre">Hombres</a></li>
+                    <li><a href="catalogo.html?seccion=mujer">Mujeres</a></li>
+                    <li><a href="catalogo.html?cat=tecnologia">Tecnología</a></li>
+                    <li><a href="catalogo.html?ofertas=1">Ofertas del día</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AYUDA</h4>
+                <ul>
+                    <li><a href="ayuda.html">Centro de ayuda</a></li>
+                    <li><a href="cuenta.html">Rastrear pedido</a></li>
+                    <li><a href="ayuda.html#titulo-dev">Devoluciones</a></li>
+                    <li><a href="ayuda.html#titulo-contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="payment-methods">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <span class="pay-tag">NEQUI</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MERCA TO-DO. Todos los derechos reservados | Hecho por suaxxa-dev</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/catalogo.js"></script>
+</body>
+</html>

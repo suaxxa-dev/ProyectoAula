@@ -1,0 +1,213 @@
+:root {
+    --primary-orange: #E3761E;
+    --bg-color: #E5E5E5;
+    --text-color: #000000;
+    --white: #FFFFFF;
+    --border-color: #D9D9D9;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 440px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HEADER */
+.header-section {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.brand-name {
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text-color);
+}
+
+.brand-name span {
+    color: var(--primary-orange);
+}
+
+.form-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* CARD */
+.card-container {
+    background: var(--white);
+    width: 100%;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+/* INPUTS CON ICONO INTERNO */
+.input-field {
+    margin-bottom: 22px;
+}
+
+.input-field label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.icon-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 18px;
+    font-size: 1.1rem;
+    color: #888;
+}
+
+input {
+    width: 100%;
+    padding: 14px 15px 14px 52px; /* Espacio para el icono */
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+}
+
+.form-error {
+    width: 100%;
+    margin: 4px 0 18px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.demo-hint {
+    margin-top: 20px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: #f8f9fa;
+    border: 1px solid var(--border-color);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: #555;
+    text-align: center;
+}
+
+.demo-hint strong {
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+/* BOTONES */
+.submit-btn {
+    background-color: var(--primary-orange);
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* DIVISOR */
+.hr-divider {
+    margin: 35px 0;
+    border-top: 1px solid #EEE;
+    position: relative;
+    text-align: center;
+}
+
+.hr-divider span {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    padding: 0 10px;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+/* SOCIAL */
+.social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    background: white;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.social-btn img {
+    width: 18px;
+}
+
+.bottom-link {
+    margin-top: 35px;
+}
+
+.bottom-link a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 800;
+}
+
+/* Footer global (mainpage.css) bajo el formulario */
+body.has-site-footer {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 24px 0 0;
+    min-height: 100vh;
+}
+
+body.has-site-footer .main-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    flex-shrink: 0;
+}
