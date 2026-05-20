@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERCA TO-DO | Método de pago</title>
+    <meta name="author" content="Juan Jose Suaza - suaxxa-dev">
+    <link rel="icon" href="img/ICON.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/mainpage.css">
+    <link rel="stylesheet" href="css/pago.css">
+</head>
+
+<body class="page-pago">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="Mainpage.html" class="brand-logo-link">
+                    <h1 class="brand-logo">MERCA <span>TO-DO</span></h1>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="carrito.html">CARRITO</a></li>
+                    <li><a href="catalogo.html?seccion=hombre" data-seccion="hombre">HOMBRE</a></li>
+                    <li><a href="catalogo.html?seccion=mujer" data-seccion="mujer">MUJER</a></li>
+                    <li><a href="catalogo.html?seccion=accesorios" data-seccion="accesorios">ACCESORIOS</a></li>
+                    <li><a href="catalogo.html?seccion=deportes" data-seccion="deportes">DEPORTES</a></li>
+                </ul>
+            </div>
+            <div class="nav-icons">
+                <div class="profile-dropdown-wrap">
+                    <button type="button" class="icon-btn" id="profile-trigger" aria-expanded="false"
+                        aria-haspopup="true" aria-controls="profile-menu"><i class="fa-solid fa-user"></i></button>
+                    <div class="profile-dropdown" id="profile-menu" role="menu" aria-label="Menú de cuenta">
+                        <div id="profile-menu-body"></div>
+                    </div>
+                </div>
+                <div class="cart-dropdown-wrap">
+                    <button type="button" class="icon-btn cart-btn" id="cart-trigger" aria-expanded="false"
+                        aria-haspopup="true" aria-controls="cart-panel">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-badge" id="cart-badge-count">0</span>
+                    </button>
+                    <div class="cart-dropdown" id="cart-panel" role="dialog" aria-label="Carrito de compras">
+                        <div class="cart-dropdown-header">Tu carrito</div>
+                        <div id="cart-panel-body"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Barra de progreso del checkout -->
+    <div class="pago-progress">
+        <div class="pago-progress-inner">
+            <div class="pago-step is-done">
+                <div class="pago-step-circle"><i class="fa-solid fa-check"></i></div>
+                <span>Carrito</span>
+            </div>
+            <div class="pago-step-line is-done"></div>
+            <div class="pago-step is-current">
+                <div class="pago-step-circle">2</div>
+                <span>Pago</span>
+            </div>
+            <div class="pago-step-line"></div>
+            <div class="pago-step">
+                <div class="pago-step-circle">3</div>
+                <span>Confirmación</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="pago-wrap">
+        <div class="pago-grid">
+
+            <!-- COLUMNA IZQUIERDA: Formularios -->
+            <div class="pago-forms">
+
+                <!-- SECCIÓN 1: Método de pago -->
+                <section class="pago-section" id="section-metodo">
+                    <h2 class="pago-section-title">Elige cómo pagar</h2>
+
+                    <!-- Recomendados -->
+                    <p class="pago-group-label">Recomendados</p>
+                    <div class="pago-methods-group">
+                        <label class="pago-method-card" id="method-pse">
+                            <input type="radio" name="metodo_pago" value="pse">
+                            <div class="pago-method-icon pago-method-icon--pse">PSE</div>
+                            <span class="pago-method-name">Transferencia con PSE</span>
+                            <i class="fa-solid fa-chevron-right pago-method-arrow"></i>
+                        </label>
+                        <label class="pago-method-card" id="method-efecty">
+                            <input type="radio" name="metodo_pago" value="efecty">
+                            <div class="pago-method-icon pago-method-icon--efecty"><i class="fa-solid fa-money-bill-wave"></i></div>
+                            <span class="pago-method-name">Efecty</span>
+                        </label>
+                    </div>
+
+                    <!-- Tarjetas -->
+                    <p class="pago-group-label">Tarjetas</p>
+                    <div class="pago-methods-group">
+                        <label class="pago-method-card" id="method-debito">
+                            <input type="radio" name="metodo_pago" value="debito">
+                            <div class="pago-method-icon pago-method-icon--card"><i class="fa-solid fa-credit-card"></i></div>
+                            <span class="pago-method-name">Nueva tarjeta de débito</span>
+                        </label>
+                        <label class="pago-method-card" id="method-credito">
+                            <input type="radio" name="metodo_pago" value="credito">
+                            <div class="pago-method-icon pago-method-icon--card"><i class="fa-regular fa-credit-card"></i></div>
+                            <span class="pago-method-name">Nueva tarjeta de crédito</span>
+                        </label>
+                    </div>
+
+                    <!-- Otros medios -->
+                    <p class="pago-group-label">Otros medios de pago</p>
+                    <div class="pago-methods-group">
+                        <label class="pago-method-card" id="method-bancolombia">
+                            <input type="radio" name="metodo_pago" value="bancolombia">
+                            <div class="pago-method-icon pago-method-icon--banco"><i class="fa-solid fa-building-columns"></i></div>
+                            <span class="pago-method-name">Transferencia con Bancolombia</span>
+                            <span class="pago-method-badge">NUEVO</span>
+                        </label>
+                        <label class="pago-method-card" id="method-nequi">
+                            <input type="radio" name="metodo_pago" value="nequi">
+                            <div class="pago-method-icon pago-method-icon--nequi"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                            <span class="pago-method-name">Nequi</span>
+                        </label>
+                    </div>
+
+                    <!-- Sub-panel: Lista de bancos PSE (oculto por defecto) -->
+                    <div class="pago-bank-panel" id="pse-bank-panel" hidden>
+                        <h3 class="pago-bank-title">Selecciona tu banco</h3>
+                        <input type="text" class="pago-bank-search" id="pse-bank-search" placeholder="Buscar banco...">
+                        <div class="pago-bank-list" id="pse-bank-list"></div>
+                    </div>
+
+                    <!-- Sub-panel: Datos de tarjeta (oculto por defecto) -->
+                    <div class="pago-card-panel" id="card-panel" hidden>
+                        <h3 class="pago-bank-title">Datos de la tarjeta</h3>
+                        <div class="pago-card-form">
+                            <div class="pago-field pago-field--full">
+                                <label for="card-number">Número de tarjeta</label>
+                                <div class="pago-card-input-wrap">
+                                    <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19" autocomplete="cc-number">
+                                    <div class="pago-card-brands">
+                                        <i class="fa-brands fa-cc-visa"></i>
+                                        <i class="fa-brands fa-cc-mastercard"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pago-card-row">
+                                <div class="pago-field">
+                                    <label for="card-exp">Vencimiento</label>
+                                    <input type="text" id="card-exp" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp">
+                                </div>
+                                <div class="pago-field">
+                                    <label for="card-cvv">CVV</label>
+                                    <input type="text" id="card-cvv" placeholder="123" maxlength="4" autocomplete="cc-csc">
+                                </div>
+                            </div>
+                            <div class="pago-field pago-field--full">
+                                <label for="card-holder">Titular de la tarjeta</label>
+                                <input type="text" id="card-holder" placeholder="Como aparece en la tarjeta" autocomplete="cc-name">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 2: Datos personales -->
+                <section class="pago-section" id="section-datos">
+                    <h2 class="pago-section-title">Datos personales</h2>
+                    <div class="pago-form-grid">
+                        <div class="pago-field">
+                            <label for="pago-nombre">Nombre</label>
+                            <input type="text" id="pago-nombre" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="pago-field">
+                            <label for="pago-apellido">Apellido</label>
+                            <input type="text" id="pago-apellido" placeholder="Tu apellido" required>
+                        </div>
+                        <div class="pago-field pago-field--full">
+                            <label for="pago-documento">Documento</label>
+                            <div class="pago-doc-wrap">
+                                <select id="pago-doc-tipo">
+                                    <option value="CC">C.C.</option>
+                                    <option value="NIT">NIT</option>
+                                    <option value="CE">C.E.</option>
+                                    <option value="PP">Pasaporte</option>
+                                </select>
+                                <input type="text" id="pago-documento" placeholder="Número de documento" required>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN 3: Dirección de facturación -->
+                <section class="pago-section" id="section-direccion">
+                    <h2 class="pago-section-title">Dirección de facturación</h2>
+                    <div class="pago-form-grid">
+                        <div class="pago-field">
+                            <label for="pago-depto">Departamento</label>
+                            <select id="pago-depto" required>
+                                <option value="">Selecciona el departamento</option>
+                                <option value="Amazonas">Amazonas</option>
+                                <option value="Antioquia">Antioquia</option>
+                                <option value="Arauca">Arauca</option>
+                                <option value="Atlántico">Atlántico</option>
+                                <option value="Bogotá D.C.">Bogotá D.C.</option>
+                                <option value="Bolívar">Bolívar</option>
+                                <option value="Boyacá">Boyacá</option>
+                                <option value="Caldas">Caldas</option>
+                                <option value="Caquetá">Caquetá</option>
+                                <option value="Casanare">Casanare</option>
+                                <option value="Cauca">Cauca</option>
+                                <option value="Cesar">Cesar</option>
+                                <option value="Chocó">Chocó</option>
+                                <option value="Córdoba">Córdoba</option>
+                                <option value="Cundinamarca">Cundinamarca</option>
+                                <option value="Guainía">Guainía</option>
+                                <option value="Guaviare">Guaviare</option>
+                                <option value="Huila">Huila</option>
+                                <option value="La Guajira">La Guajira</option>
+                                <option value="Magdalena">Magdalena</option>
+                                <option value="Meta">Meta</option>
+                                <option value="Nariño">Nariño</option>
+                                <option value="Norte de Santander">Norte de Santander</option>
+                                <option value="Putumayo">Putumayo</option>
+                                <option value="Quindío">Quindío</option>
+                                <option value="Risaralda">Risaralda</option>
+                                <option value="San Andrés">San Andrés</option>
+                                <option value="Santander">Santander</option>
+                                <option value="Sucre">Sucre</option>
+                                <option value="Tolima">Tolima</option>
+                                <option value="Valle del Cauca">Valle del Cauca</option>
+                                <option value="Vaupés">Vaupés</option>
+                                <option value="Vichada">Vichada</option>
+                            </select>
+                        </div>
+                        <div class="pago-field">
+                            <label for="pago-ciudad">Municipio o ciudad capital</label>
+                            <input type="text" id="pago-ciudad" placeholder="Tu ciudad" required>
+                        </div>
+                        <div class="pago-field">
+                            <label for="pago-calle">Calle / Dirección</label>
+                            <input type="text" id="pago-calle" placeholder="Ej: Calle 45 #12-34" required>
+                        </div>
+                        <div class="pago-field">
+                            <label for="pago-numero">Número / Apto</label>
+                            <div class="pago-numero-wrap">
+                                <input type="text" id="pago-numero" placeholder="Número">
+                                <label class="pago-sin-num">
+                                    <input type="checkbox" id="pago-sin-numero">
+                                    Sin número
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- COLUMNA DERECHA: Resumen de compra -->
+            <aside class="pago-summary" id="pago-summary" aria-label="Resumen de compra">
+                <h2>Resumen de compra</h2>
+                <div class="pago-sum-row">
+                    <span>Producto</span>
+                    <span class="pago-sum-val" id="pago-sum-producto">$ 0</span>
+                </div>
+                <div class="pago-sum-row">
+                    <span>Envío</span>
+                    <span class="pago-sum-val pago-sum-val--green" id="pago-sum-envio">Gratis</span>
+                </div>
+                <div class="pago-sum-row">
+                    <span>Impuestos (19%)</span>
+                    <span class="pago-sum-val" id="pago-sum-tax">$ 0</span>
+                </div>
+                <div class="pago-sum-total">
+                    <span>Pagas</span>
+                    <div class="pago-sum-total-right">
+                        <span class="pago-sum-total-old" id="pago-sum-old" hidden></span>
+                        <span class="pago-sum-total-price" id="pago-sum-total">$ 0</span>
+                        <span class="pago-sum-savings" id="pago-sum-savings" hidden></span>
+                    </div>
+                </div>
+                <button type="button" class="pago-btn-confirm" id="btn-confirmar" disabled>Continuar</button>
+                <p class="pago-secure"><i class="fa-solid fa-shield-halved"></i> Compra 100% segura y protegida</p>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col info-col">
+                <h3 class="brand-logo">MERCA <span>TO-DO</span></h3>
+                <p>Somos la plataforma líder en comercio digital, conectando tus deseos con la puerta de tu casa.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>COMPRAS</h4>
+                <ul>
+                    <li><a href="catalogo.html?seccion=hombre">Hombres</a></li>
+                    <li><a href="catalogo.html?seccion=mujer">Mujeres</a></li>
+                    <li><a href="catalogo.html?cat=tecnologia">Tecnología</a></li>
+                    <li><a href="catalogo.html?ofertas=1">Ofertas del día</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>AYUDA</h4>
+                <ul>
+                    <li><a href="ayuda.html">Centro de ayuda</a></li>
+                    <li><a href="cuenta.html">Rastrear pedido</a></li>
+                    <li><a href="ayuda.html#titulo-dev">Devoluciones</a></li>
+                    <li><a href="ayuda.html#titulo-contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="payment-methods">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <span class="pay-tag">NEQUI</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MERCA TO-DO. Todos los derechos reservados | Hecho por suaxxa-dev</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/pago.js"></script>
+</body>
+
+</html>
